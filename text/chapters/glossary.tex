@@ -1,0 +1,24 @@
+\chapwithtoc{Glossary}
+
+\begin{description}
+	
+	\item[Hard regularization] Hard constraint on the computation. For example, in the form of an explicitly parameterized filter that cannot deviate from its form (e.g. difference-of-Gaussians filter instead of an arbitrary fully connected filter).
+	
+	\item[Soft regularization] Gradual penalty on certain properties of a computation. Usually implemented as an additional element of the loss function, punishing certain properties of free parameters (e.g. Laplacian regularization on a fully connected filter pushing it towards spatial smoothness).
+	
+	\item[Experiment] A single grid-search exploration of a small subset of hyperparameters or architecture aspects.
+	
+	\item[Experiment instance] One particular model architecture with a specific set of hyperparameters.
+	
+	\item[Experiment (instance) run] One initialization and fitting of a single experiment instance.
+	
+	\item[Baseline (model)] An architecture + hyperparameters that is used as a basis for experiments.
+	
+	\item[HSM / Antolik et al. model] Three layer neural model with DoG layer introduced by \cite{antolik}.
+
+	\item[What/where model] Convolutional neural model with separable layer introduced by \cite{klidnt}.
+
+	\item[Receptive field] The portion of sensory space that elicits neuron’s responses when stimulated.
+
+\end{description}
+
