@@ -1,5 +1,5 @@
 ## About:
-This repository contains the LaTeX sources for my master thesis about. Its implementation part is available in [msc-neuro repository](https://github.com/petrroll/msc-neuro). 
+This repository contains the LaTeX sources for my master thesis. Its implementation part is available in [msc-neuro repository](https://github.com/petrroll/msc-neuro). 
 
 ## Abstract:
 Accurate models of visual system are key for understanding how our brains process visual information. In recent years, DNNs have been rapidly gaining traction in this domain. However, only few studies attempted to incorporate known anatomical properties of visual system into standard DNN architectures adapted from the general machine learning field, to improve their interpretability and performance on visual data.
