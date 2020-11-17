@@ -1,7 +1,7 @@
 % Metadata to be stored in PDF, see documentation of the pdfx package for more details.
 
-\Author{Name Surname}
-\Title{Thesis title}
-\Keywords{keywords\sep more such\sep yet another}
+\Author{Petr Houška}
+\Title{Deep-learning architectures for analysing population neural data}
+\Keywords{deep-learning\sep computational neuroscience\sep v1\sep bio-inspired architectures\sep visual computation}
 \Subject{Abstract of thesis}
 \Publisher{Charles University}
