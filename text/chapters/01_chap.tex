@@ -1,7 +1,7 @@
-\chapter{Background}\label{ch:background}
+\chapter{Background}\label{ch:1}
 
 \section{Visual sensory neuroscience}
-In this section, we provide an introduction to visual neuroscience necessary for understanding the biological plausibility of our models. For a more comprehensive and in-depth introduction to neuroscience of vision please refer to Neuroscience: Exploring the Brain (\cite{bear_neuroscience:_2007}) or the excellent summary provided as part of \cite{Carandini10577} review.
+In this section, we provide an introduction to visual neuroscience necessary for understanding the biological plausibility of our models. For a more comprehensive and in-depth introduction to neuroscience of vision please refer to \textit{Neuroscience: Exploring the Brain} (\cite{bear_neuroscience:_2007}) or the excellent summary provided as part of \cite{Carandini10577} review.
 
 \subsection{Early visual system}
 In this thesis we restrict our focus to the first 3 early stages of visual processing, corresponding to three neural structures: the retina, lateral geniculate body (LGN) and primary visual cortex (V1).
@@ -32,7 +32,7 @@ The nature of complex cells is not yet entirely settled, but it is understood th
 
 \section{Computational neuroscience}
 
-In the following subsections, we provide an introduction to the traditional system identification methods used in visual neuroscience. For further details, refer to Data-driven approaches to understanding visual neuron activity (\cite{doi:10.1146/annurev-vision-091718-014731}) or \cite{Carandini10577} review.
+In the following subsections, we provide an introduction to the traditional system identification methods used in visual neuroscience. For further details, refer to \textit{Data-driven approaches to understanding visual neuron activity} (\cite{doi:10.1146/annurev-vision-091718-014731}) or \cite{Carandini10577} review.
 
 \subsection{General overview}
 
@@ -73,10 +73,10 @@ Since the k-ary non-linearity function can combine the individual results in a n
 
 In addition to solving the two problems of GLM and being more interpretable, as it is simply a linear combination of LN models whose filters we can visualise with a non-linearity at the end, the fact that the combination can be individually parametrized opened the door to a particular multi-step learning strategy. When modeling multiple neurons that are believed to be similar in function, we can share the first level filters ($o_i$) between them, and only individually fit the $w$ parameters. This allows the filters $o_i$ to be based on more data - from all neurons instead of just one, and in turn, decreases the chance for overfitting.
 
-Furthermore, the filters can be parametric, e.g. gabor functions (\cite{Kay2008}), gaussians, or pre-computed bank of filters - for example borrowed from classical image processing toolkit. This can serve two goals. First, significantly decrease the number of free parameters of the model. While a normal filter for a 31x31 image has 961 parameters, a simple gaussian filter has only 4, strength, x and y coordinates of the center, and width. Second, it can ground the model in biological reality. For example, the computational properties of retinal ganglion cells are known to be well approximated in space by a difference-of-Gaussian function\footnote{A difference between two concentric 2D Gaussians.} and so one can inject such priors in the model. We will call this approach hard regularization. Similar effect can be achieved on arbitrary filters with regularization during parameter fitting which penalizes forms of the filter that diverge from our desired shape, as explained above for the LN model. We will call that soft regularization.
+\label{intr:hard-reg}\label{intr:soft-reg}Furthermore, the filters can be parametric, e.g. gabor functions (\cite{Kay2008}), gaussians, or pre-computed bank of filters - for example borrowed from classical image processing toolkit. This can serve two goals. First, significantly decrease the number of free parameters of the model. While a normal filter for a 31x31 image has 961 parameters, a simple gaussian filter has only 4, strength, x and y coordinates of the center, and width. Second, it can ground the model in biological reality. For example, the computational properties of retinal ganglion cells are known to be well approximated in space by a difference-of-Gaussian function\footnote{A difference between two concentric 2D Gaussians.} and so one can inject such priors in the model. We will call this approach hard regularization. Similar effect can be achieved on arbitrary filters with regularization during parameter fitting which penalizes forms of the filter that diverge from our desired shape, as explained above for the LN model. We will call that soft regularization.
 
 \section{ML and Deep neural networks}
-In this section we will provide a brief overview of deep neural networks (DNN) fundamentals to introduce the most relevant principles and unite terminology. For a comprehensive description of general machine learning and particularly DNN methods please refer to the Deep Learning book (\cite{Goodfellow-et-al-2016}).
+In this section we will provide a brief overview of deep neural networks (DNN) fundamentals to introduce the most relevant principles and unite terminology. For a comprehensive description of general machine learning and particularly DNN methods please refer to the \textit{Deep Learning book} (\cite{Goodfellow-et-al-2016}).
 
 \subsection{Feed forward neural network}
 Deep neural network (DNN) is a statistical machine learning model vaguely inspired by the brain. The term neural comes from the fact that it is traditionally composed of computational neurons\footnote{Not to be confused with biological neurons.} (also called perceptrons \cite{Rosenblatt1958ThePA}). Computational neurons are mathematically defined as a weighted sum of their inputs followed by, usually a non-linear, activation function. Deep and networks, because they are usually composed of several interconnected layers of neurons. A single layer of a DNN is defined by its inputs $x$ and outputs $y$ tensors. The output of the $k$-th neuron of the simplest, a fully connected, layer with $n$ inputs is then (Eq. \ref{eq:1.6}):

@@ -2,9 +2,9 @@
 
 \begin{description}
 	
-	\item[Hard regularization] Hard constraint on the computation. For example, in the form of an explicitly parameterized filter that cannot deviate from its form (e.g. difference-of-Gaussians filter instead of an arbitrary fully connected filter).
+	\item[Hard regularization]\label{glos:hard-reg} Hard constraint on the computation. For example, in the form of an explicitly parameterized filter that cannot deviate from its form (e.g. difference-of-Gaussians filter instead of an arbitrary fully connected filter). Introduced in \hyperref[intr:hard-reg]{chapter 1}.
 	
-	\item[Soft regularization] Gradual penalty on certain properties of a computation. Usually implemented as an additional element of the loss function, punishing certain properties of free parameters (e.g. Laplacian regularization on a fully connected filter pushing it towards spatial smoothness).
+	\item[Soft regularization]\label{glos:soft-reg} Gradual penalty on certain properties of a computation. Usually implemented as an additional element of the loss function, punishing certain properties of free parameters (e.g. Laplacian regularization on a fully connected filter pushing it towards spatial smoothness). Introduced in \hyperref[intr:soft-reg]{chapter 1}.
 	
 	\item[Experiment] A single grid-search exploration of a small subset of hyperparameters or architecture aspects.
 	
@@ -19,6 +19,8 @@
 	\item[What/where model] Convolutional neural model with separable layer introduced by \cite{klidnt}.
 
 	\item[Receptive field] The portion of sensory space that elicits neuron’s responses when stimulated.
+
+	\item[Readout layer] The first fully connected (or similar) layer after a set of convolutional layers.
 
 \end{description}
 
