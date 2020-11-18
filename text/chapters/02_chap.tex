@@ -36,7 +36,7 @@ The published model was trained using a Newton Conjugate-Gradient algorithm\foot
 
 The reported values for the hidden layer size ratio and the number of DoG filters hyperparameters were found empirically using two one-dimensional searches through the parameter space.
 
-\section{Klindt et al. and the separable layer}
+\section{Klindt et al. and the separable layer}\label{ch:2.2}
 
 In 2017 Klindt et al. published a paper \textit{Neural system identification for large populations separating “what” and “where”} (\cite{klidnt}) that explored deep convolutional neural networks in the context of V1 neural data. It specifically focused on the estimation of individual neurons’ receptive field locations through a novel approach to readout layer\footnote{Readout layer is the first fully connected layer after a set of convolutional layers.} factorization, in an effort to allow effective fitting of thousands of neurons on relatively little data simultaneously. In addition to artificial data, it was also evaluated on the same dataset as \cite{antolik} where it achieved state of the art results\footnote{For results refer to section \ref{ch:4.1.2}.}, improving on Antolik et al.
 

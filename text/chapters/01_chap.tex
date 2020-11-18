@@ -3,7 +3,7 @@
 \section{Visual sensory neuroscience}
 In this section, we provide an introduction to visual neuroscience necessary for understanding the biological plausibility of our models. For a more comprehensive and in-depth introduction to neuroscience of vision please refer to \textit{Neuroscience: Exploring the Brain} (\cite{bear_neuroscience:_2007}) or the excellent summary provided as part of \cite{Carandini10577} review.
 
-\subsection{Early visual system}
+\subsection{Early visual system}\label{ch:1.1.1}
 In this thesis we restrict our focus to the first 3 early stages of visual processing, corresponding to three neural structures: the retina, lateral geniculate body (LGN) and primary visual cortex (V1).
 
 The journey of a visual stimuli starts on the retina at the back of an eye, where photosensitive cells - rods and cones measure the intensity of the light reflected by objects in our field of vision and projected at the back of our eye by cornea. While the particularities of rods and cones are interesting, especially when it comes to color processing, for the purpose of this introduction we will treat them as simple detectors that output electrical signal proportional to the sensed luminance, resulting in what could be abstracted as a matrix of luminescence levels - a raster image. 
@@ -90,14 +90,14 @@ When multiple layers $f_1, f_2, \dots, f_n$ are stacked on each other - to form 
 \begin{table}[h]
     \renewcommand{\arraystretch}{1.2}
     \centering
-    \begin{tabular}{|l|l|}
-        \hline
-        \textbf{Name} & \textbf{Function} \\ \hline
-        ReLU & $f(x) = max(0, x)$ \\ \hline
-        Sigmoid & $f(x) = \frac{1 }{1 + e^{-x} } $ \\ \hline
-        SoftPlus & $f(x) = ln(1+e^x)$ \\ \hline
-        Linear/Identity & $f(x) = x$ \\ \hline
-        TanH & $f(x) = tanh(x)$ \\ \hline
+    \begin{tabular}{l|l}
+        \toprule
+        \textbf{Name} & \textbf{Function} \\ \midrule
+        ReLU & $f(x) = max(0, x)$ \\ 
+        Sigmoid & $f(x) = \frac{1 }{1 + e^{-x} } $ \\ 
+        SoftPlus & $f(x) = ln(1+e^x)$ \\ 
+        Linear/Identity & $f(x) = x$ \\ 
+        TanH & $f(x) = tanh(x)$ \\ \bottomrule
 
     \end{tabular}
     \caption[Commonly used activation functions]{Some of the commonly used activation functions\protect\footnotemark.}
@@ -125,15 +125,23 @@ There are several differences between system identification tasks of computation
 
 In the following section we will introduce particular tools and techniques that are commonly used by system identification methods in neuroscience and which will be featured in our exploration, but are not as well known in the classical machine learning or computer vision domain. 
 
-\subsection{Poisson versus Gaussian loss function}
+\subsection{Poisson versus Gaussian loss function}\label{ch:1.4.2}
+
+Since our system classification problem is essentially a regression, the output consists of a real valued response for each neuron. We need an appropriate loss function to measure the distance of the model’s prediction to the recorded data. It is common to assume that the data contains noise with Gaussian distribution and then construct the loss function through most likelihood estimation (MLE) method, leading to mean squared error (MSE). Gaussian distribution is commonly used due to it being the maximum entropy probability distribution for a fixed mean and standard deviation. Intuitively speaking, it is the distribution that assumes the least given mean, which is zero for the noise, and static variance.
+
+In our case, with outputs that are proportional to the spike rates of neurons, we do not have to assume the most generic distribution, however. There is evidence (\cite{Goris2014}) that the variance of neural response roughly corresponds to the neuron’s firing rate. Furthemore, spiking outputs are strictly non-negative, invalidating the assumption of Gaussian distribution. That means Poisson distribution, which assumes variance proportional to its mean and is non-negative, is a more optimal choice for modeling them. Through MLE, for measured firing rate $x$ and predicted firing rate $y$ that gives us the loss function on equation \ref{eq:1.7} .
+
+\begin{equation}\label{eq:1.7}
+    loss(x,y)=y-x\log{(y)}
+\end{equation}
 
 \subsection{Correlation as performance metric}
 
 Even though the loss function based on Poisson noise assumption is the optimal metric to optimise during training, it is not very good for eventual analysis and comparison of different models, potentially across multiple datasets. Not only is it dependent on the assumed noise distribution, which is a technical detail of the fitting process, rather than a feature of the actual resulting fitted model, but it is also influenced by the scale of output data, and generally does not have an intuitive interpretation.
 
-For those reasons, either the Pearson’s correlation coefficient (Eq. \ref{eq:1.7}) or the proportion of explained variance between each neuron’s model predicted output and its measured response is more commonly used instead. In this thesis, we will use Pearson’s correlation coefficient averaged across all recorded neurons for simplicity.
+For those reasons, either the Pearson’s correlation coefficient (Eq. \ref{eq:1.8}) or the proportion of explained variance between each neuron’s model predicted output and its measured response is more commonly used instead. In this thesis, we will use Pearson’s correlation coefficient averaged across all recorded neurons for simplicity.
 
-\begin{equation}\label{eq:1.7}
+\begin{equation}\label{eq:1.8}
 r(x, y) = \frac{{}\sum_{i=1}^{n} (x_i - \overline{x})(y_i - \overline{y})}
 {\sqrt{\sum_{i=1}^{n} (x_i - \overline{x})^2(y_i - \overline{y})^2}}
 \end{equation}
@@ -144,16 +152,16 @@ In addition to the wide set of traditional parameters regularizations common to 
 \begin{table}[h]
     \renewcommand{\arraystretch}{1.2}
     \centering
-    \begin{tabular}{|l|l|}
-        \hline
-        \textbf{Name} & \textbf{Function} \\ \hline
-        L1 & $\sum_i \abs{|w_i|}$ \\ \hline
-        L2 & $\sum_i w_i^2$ \\ \hline
+    \begin{tabular}{l|l}
+        \toprule
+        \textbf{Name} & \textbf{Function} \\ \midrule
+        L1 & $\sum_i \abs{|w_i|}$ \\ 
+        L2 & $\sum_i w_i^2$ \\ 
         Laplacian & $\sum_{x,y, i, o}(W_{:,:, i, o}*L)_{x,y}^2, \quad L=\left[\begin{smallmatrix}
 0 & 1 & 0\\
 1 & -4 & 1\\
 0 & 1 & 0\end{smallmatrix}\right]$
- \\ \hline
+ \\ \bottomrule
     \end{tabular}
     \caption[Relevant weights soft regularizations.]{Relevant weights soft regularizations.}
     \label{tab:1.2}
