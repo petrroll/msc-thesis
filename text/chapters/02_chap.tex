@@ -30,7 +30,7 @@ The two levels of V1 neurons are modeled as two consecutive fully connected laye
     \label{fig:2.1}
 \end{figure}
 
-\subsection{Training regime}
+\subsection{Training regime}\label{ch:2.1.3}
 
 The published model was trained using a Newton Conjugate-Gradient algorithm\footnote{\href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_tnc.html}{https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin\_tnc.html}.} with 100 epochs, each consisting of 10 000 evaluations maximum. The batch size for this optimiser is the entire dataset. In addition to the hard regularization\footnote{We are referring to our definition of hard regularization (see in \hyperref[glos:hard-reg]{Glossary}).} provided by the parameterized filters of the DoG layer, all parameters - of the weights of DoG layer and both fully connected layers - were kept within predefined bounds by the optimiser throughout the fitting. These bounds were also used for random initialization of the parameters, during which values were drawn from uniform distributions with corresponding bounds. No other soft or hard regularization is present in the model. 
 
@@ -55,7 +55,7 @@ The receptive field consists of a single readout layer (further referred to as t
 
 The model was trained using ADAM optimiser and early stopping on 20/80 training set split. Reported hyperparameters, such as the number and size of convolution filters, were found and cross-validated using grid search for each region.
 
-\section{Related works}
+\section{Related works}\label{ch:2.3}
 To provide some background, this section lists a few related works that are relevant to V1 system identification but are not directly used or in any way referenced by our experiments. Specifically, we will introduce a few convolutional architectures, as they have seen an increase in usage for V1 modeling, similarly as they have taken over classical computer vision\footnote{Even though they are slowly being superseded by attention/transformer-based networks (\cite{2019arXiv190605909R}, \cite{2019arXiv190409925B}), \cite{dosovitskiy2020image}).}.
 
 \subsection{Neural convolutional models}

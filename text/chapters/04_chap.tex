@@ -128,7 +128,7 @@ Thus, with a few exceptions, we report three metrics per experiment instance. Th
 
 It is important to note that each run is not represented by just a single scalar - its performance at the end of training, but a time series that shows the progress during training. For simplification, we will mostly consider only either the end of training or peak value, however. When relevant, we will draw explicit attention to the speed of convergence or other phenomena apparent only when the whole training in time is considered.
 
-\section{Training regime}
+\section{Training regime}\label{ch:4.4}
 
 We opted for a simple static and fully predetermined amount of training epochs. The reason why we did not choose early stopping instead is threefold. First, it is the simpler solution without additional hyperparameters and implementational complexity. Second, we only have limited data that is already explicitly divided into train and validation sets. Splitting either to form a test set to evaluate early stopping on might compromise either training or validation due to insufficient data. Third, due to the size of the validation set, we evaluate it fully throughout the training process, capturing all relevant performance metrics (see section \ref{ch:3.1.1}). Thanks to that, we always have the full information about the model’s peak performance on the validation set, even if we overfit after achieving it. This leaves computational efficiency as the only benefit of early stopping, which in our opinion did not outweigh the negatives\footnote{\cite{klidnt} report using early stopping with a training set split of 80/20 (see section \ref{ch:2.2})}.
 
@@ -138,7 +138,7 @@ In regards to the number of runs per model instance, we have chosen 10 runs for 
 
 Unless explicitly mentioned, all of our experiments are evaluated only on region 1. Region 1 was chosen due to being the largest, highest performing, and least stable of the three regions - as reported by Antolik et al. In section \ref{ch:5.3.2} we evaluate the main architectures explored and fine-tuned on region 1 on regions 2 and 3 as well.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/04_runs_number}
     \caption[Impact of 25 vs 50 runs]{Illustrates the difference between running the least stable baseline model 25 and 50 times. The line represents median run, top and bottom error bars 90th and 10th percentile runs.}

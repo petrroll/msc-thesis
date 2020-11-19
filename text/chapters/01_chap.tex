@@ -46,7 +46,7 @@ The second approach abstracts away details of singular neurons and focuses on hi
 
 In the rest of this chapter, and thesis in general, we will consider only statistical models for solving system identification tasks within the domain of visual sensory neuroscience. Our inputs will be images presented to a subject, in case of our data a mouse, in a form of 2D pixel matrices. The outputs will be real values, one per recorded neuron, representing an estimate of the measured neural activity elicited by presentation of the given image.
 
-\subsection{Classical models}
+\subsection{Classical models}\label{ch:1.2.2}
 The simplest method possible for predicting a single neuron’s response to an image stimuli is a linear model, essentially a linear regression over the pixels of the input. Mathematically, for parameters $o$ (also called weights, or in this case filter) and an image of height $h$ and width $w$ pixels that gives us the equation \ref{eq:1.2}. In such a linear model, the weights can be fitted in a number of ways, either through gradient descent methods, or analytically to compute the optimal solutions from the whole dataset. The second approach is commonly called Spike Triggered Average (STA). Both ways of fitting can incorporate regularization for the weights, for example to punish a high first derivative in both spatial dimensions, ensuring smoothness (\cite{first_kernel}). This is particularly necessary in the neuroscientific settings where datasets tend to be of limited size, and overfitting of models is thus a major challenge. 
 
 \begin{equation}\label{eq:1.2}
@@ -109,7 +109,7 @@ When multiple layers $f_1, f_2, \dots, f_n$ are stacked on each other - to form 
 
 Much like the LNLN filters, DNN layers do not have to be generic. Similar to what we termed hard regularization, they can exploit known properties of the computation they are trying to model. Most notably, convolutional layers make use of local properties of inputs with continuous dimensions, such as the spatial dimensions of image inputs\footnote{Deep neural networks with convolutional layers are commonly called convolutional neural networks (CNN).}. Their outputs are the result of a location invariant filter applied at all spatial locations of the input. For more information, refer to introduction to convolutional networks in \cite{thesis_hojdar}.
 
-\subsection{DNN training}
+\subsection{DNN training}\label{ch:1.3.2}
 
 Due to the number of free parameters in even relatively shallow DNNs, these models cannot be fitted analytically. Instead, iterative gradient descent based methods, such as stochastic gradient descent (SGD \cite{kiefer1952}) or more recently ADAM (\cite{kingma2014adam}), are commonly used. In gross simplification, the fitting process, also called model training, works as follows. A small random subset (batch) of input and corresponding desired output (gold data) is taken from the dataset. The input portion of a batch is used as the model’s input, computation happens, and we get a prediction (response) from the model. Then, the model’s response and corresponding gold data are put into a loss function. It serves as the metric of how far the model prediction was from the desired output. The loss function can also penalize certain properties of the model’s parameters (e.g. increase the loss for every non-zero weight). As the last step, first derivatives of the loss function with respect to all the model’s free parameters are taken (gradient) and subtracted (model update) from the parameters to, in theory, decrease the loss value next time. This step is repeated for all batches in our dataset\footnote{This means a larger batch size proportionally leads to a smaller number of model updates per epoch.}. The whole process up until now constitutes one epoch. Epochs are then repeated until convergence.
 
@@ -125,7 +125,7 @@ There are several differences between system identification tasks of computation
 
 In the following section we will introduce particular tools and techniques that are commonly used by system identification methods in neuroscience and which will be featured in our exploration, but are not as well known in the classical machine learning or computer vision domain. 
 
-\subsection{Poisson versus Gaussian loss function}\label{ch:1.4.2}
+\subsection{Poisson versus Gaussian loss function}\label{ch:1.4.1}
 
 Since our system classification problem is essentially a regression, the output consists of a real valued response for each neuron. We need an appropriate loss function to measure the distance of the model’s prediction to the recorded data. It is common to assume that the data contains noise with Gaussian distribution and then construct the loss function through most likelihood estimation (MLE) method, leading to mean squared error (MSE). Gaussian distribution is commonly used due to it being the maximum entropy probability distribution for a fixed mean and standard deviation. Intuitively speaking, it is the distribution that assumes the least given mean, which is zero for the noise, and static variance.
 
@@ -135,7 +135,7 @@ In our case, with outputs that are proportional to the spike rates of neurons, w
     loss(x,y)=y-x\log{(y)}
 \end{equation}
 
-\subsection{Correlation as performance metric}
+\subsection{Correlation as performance metric}\label{ch:1.4.2}
 
 Even though the loss function based on Poisson noise assumption is the optimal metric to optimise during training, it is not very good for eventual analysis and comparison of different models, potentially across multiple datasets. Not only is it dependent on the assumed noise distribution, which is a technical detail of the fitting process, rather than a feature of the actual resulting fitted model, but it is also influenced by the scale of output data, and generally does not have an intuitive interpretation.
 
