@@ -1,6 +1,6 @@
 \chapter{Key and related works}\label{ch:2}
 
-In this chapter, we start by introducing the \cite{antolik} model, which will be the main focus of our experiments. Further, we describe a model by \cite{klidnt}, whose separable layer contribution we will also explore. To provide some background, we finish with a quick look at a few additional related works.
+In this chapter, we start by introducing the \cite{antolik} model, which will be the main focus of our experiments. Further, we describe a model by \cite{klindt}, whose separable layer contribution we will also explore. To provide some background, we finish with a quick look at a few additional related works.
 
 \section{Antolik et al. and the DoG layer}
 
@@ -38,16 +38,16 @@ The reported values for the hidden layer size ratio and the number of DoG filter
 
 \section{Klindt et al. and the separable layer}\label{ch:2.2}
 
-In 2017 Klindt et al. published a paper \textit{Neural system identification for large populations separating “what” and “where”} (\cite{klidnt}) that explored deep convolutional neural networks in the context of V1 neural data. It specifically focused on the estimation of individual neurons’ receptive field locations through a novel approach to readout layer\footnote{Readout layer is the first fully connected layer after a set of convolutional layers.} factorization, in an effort to allow effective fitting of thousands of neurons on relatively little data simultaneously. In addition to artificial data, it was also evaluated on the same dataset as \cite{antolik} where it achieved state of the art results\footnote{For results refer to section \ref{ch:4.1.2}.}, improving on Antolik et al.
+In 2017 Klindt et al. published a paper \textit{Neural system identification for large populations separating “what” and “where”} (\cite{klindt}) that explored deep convolutional neural networks in the context of V1 neural data. It specifically focused on the estimation of individual neurons’ receptive field locations through a novel approach to readout layer\footnote{Readout layer is the first fully connected layer after a set of convolutional layers.} factorization, in an effort to allow effective fitting of thousands of neurons on relatively little data simultaneously. In addition to artificial data, it was also evaluated on the same dataset as \cite{antolik} where it achieved state of the art results\footnote{For results refer to section \ref{ch:4.1.2}.}, improving on Antolik et al.
 
 \subsection{Architecture}
 
-The what/where model consists of two parts, feature space and receptive fields. The feature space is a cascade of - in the variant for Antolik et al. dataset - 3 convolutional layers, each followed by a batch normalisation\footnote{\cite{2015arXiv150203167I}} and a SoftPlus activation function. The convolution layers have 48 feature maps per each layer, with the first one having 13 pixel and the other two 3 pixel kernels. In addition, the convolution layers feature two types of soft regularizations. A Laplacian regularizations to ensure smoothness of the filters and an L2 based group sparsity regularization\footnote{For a definition, please refer to the original paper (\cite{klidnt}).} to encourage filters to pool from only a small set of feature maps in the previous layer.
+The what/where model consists of two parts, feature space and receptive fields. The feature space is a cascade of - in the variant for Antolik et al. dataset - 3 convolutional layers, each followed by a batch normalisation\footnote{\cite{2015arXiv150203167I}} and a SoftPlus activation function. The convolution layers have 48 feature maps per each layer, with the first one having 13 pixel and the other two 3 pixel kernels. In addition, the convolution layers feature two types of soft regularizations. A Laplacian regularizations to ensure smoothness of the filters and an L2 based group sparsity regularization\footnote{For a definition, please refer to the original paper (\cite{klindt}).} to encourage filters to pool from only a small set of feature maps in the previous layer.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{../figures/02_fig2}
-    \caption[Klidnt et al. model]{Architecture of Klindt et al. model, consisting of convolution layers and a factorized readout layer. Figure was adopted from \cite{klidnt}.}
+    \caption[klindt et al. model]{Architecture of Klindt et al. model, consisting of convolution layers and a factorized readout layer. Figure was adopted from \cite{klindt}.}
     \label{fig:2.2}
 \end{figure}
 
@@ -59,7 +59,7 @@ The model was trained using ADAM optimiser and early stopping on 20/80 training 
 To provide some background, this section lists a few related works that are relevant to V1 system identification but are not directly used or in any way referenced by our experiments. Specifically, we will introduce a few convolutional architectures, as they have seen an increase in usage for V1 modeling, similarly as they have taken over classical computer vision\footnote{Even though they are slowly being superseded by attention/transformer-based networks (\cite{2019arXiv190605909R}, \cite{2019arXiv190409925B}), \cite{dosovitskiy2020image}).}.
 
 \subsection{Neural convolutional models}
-\cite{ecker} inspired by aforementioned \cite{klidnt}, further explored convolutional architectures. In addition to the Klindt et al.’s observation that many neurons of early visual processing are similar but only have their receptive fields at different locations, Ecker et al.’s model leveraged the fact that even more V1 neurons are functionally the same, if we assume not only arbitrary receptive field positions but also arbitrary orientations. Based on the same two parts, 3 convolutional layers architecture introduced by Klindt et al., their model used Group equivariant convolutions (\cite{2016arXiv160207576C}) instead of traditional convolution layers.
+\cite{ecker} inspired by aforementioned \cite{klindt}, further explored convolutional architectures. In addition to the Klindt et al.’s observation that many neurons of early visual processing are similar but only have their receptive fields at different locations, Ecker et al.’s model leveraged the fact that even more V1 neurons are functionally the same, if we assume not only arbitrary receptive field positions but also arbitrary orientations. Based on the same two parts, 3 convolutional layers architecture introduced by Klindt et al., their model used Group equivariant convolutions (\cite{2016arXiv160207576C}) instead of traditional convolution layers.
 
 Tackling a similar problem from a different angle, \cite{Walke506956} introduced a convolutional architecture, where the readout locations - representing the receptive fields of output neurons - are modulated by a shifter side network based on eye movement data. In addition, the neural outputs are further adjusted by a second side network using behaviour data (running state, pupil dilation), trying to incorporate extra-retina sources of LGN and further downstream stages of visual processing. For the core network, the model used a three layer convolutional cascade followed by a neuron specific linear readout stage. 
 
