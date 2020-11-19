@@ -25,14 +25,14 @@ The NDN model class recursively contains instances representing its parts. The N
 
 Whenever computation is invoked - e.g. when \texttt{train} or \texttt{generate\_predic\-tion} methods are called, a new TF session is initialized, a computational graph is recursively created from scratch using the description saved on the internal network and layer objects, and finally, weights are loaded to the session from the aforementioned layers’ parameters backing NP arrays. When the computation finishes, all weights are gathered from the TF session to plain NP arrays and saved within layers’ objects of the model again. For visualisation, refer to figure \ref{fig:3.2}.
 
+All shapes are inferred from input dimensions, specified layer sizes, and - e.g. in the case of convolutional layer - its stride and filter size, with the last layer size serving as the output dimensions. The interpretation of input dimensions is (\texttt{time}\footnote{This is to support temporal models which we will not cover.}, \texttt{width}, \texttt{height}). Internally, the framework assumes \texttt{(batch\_shape, height, width, channels} or \texttt{time)} dimensionality and uses flatten representation to float data between layers. When necessary, for example to apply 2D convolution, a layer restores the full dimensionality, both spatial and channels/time dimensions, and, after applying its function, flattens the data again. 
+
 \begin{figure}[ht]
     \centering
     \includegraphics[]{../figures/03_NDN_2}
     \caption[NDN computation graph initialization]{Diagram of NDN model initialization when \texttt{train(...)} method is called.}
     \label{fig:3.2}
 \end{figure}
-
-All shapes are inferred from input dimensions, specified layer sizes, and - e.g. in the case of convolutional layer - its stride and filter size, with the last layer size serving as the output dimensions. The interpretation of input dimensions is (\texttt{time}\footnote{This is to support temporal models which we will not cover.}, \texttt{width}, \texttt{height}). Internally, the framework assumes \texttt{(batch\_shape, height, width, channels} or \texttt{time)} dimensionality and uses flatten representation to float data between layers. When necessary, for example to apply 2D convolution, a layer restores the full dimensionality, both spatial and channels/time dimensions, and, after applying its function, flattens the data again. 
 
 \subsection{NDN3 toolkit}\label{ch:3.1.1}
 

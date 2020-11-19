@@ -22,7 +22,7 @@ The second difference between our reimplementation and the original model was in
 \subsection{Reimplementation}
 \subsubsection{Initial reimplementation: Baseline 1}
 
-With aforementioned differences, the initial reimplementation, further referred to as \emph{baseline 1}\footnote{As explained in the \nameref{ch:4.2.1} section of \nameref{ch:4} chapter, we will be creating a set of \emph{baseline} models. These will serve as the base for further, more focused, experiments. If experiments using the current baseline show potential for improvement, we will gather these changes, and test a new baseline candidate. If it performs better, it becomes the new baseline and all subsequent experiments will be based on it.} model, achieved validation set correlation of 0.42, 0.48, and 0.3 for its median, 90th percentile, and 10th percentile runs by the end of the 35 000 epochs of training respectively. As shown on figure \ref{fig:5.1.1.1}, this is worse than the fully trained results reported by \citeauthor{antolik} (0.48, 0.5, 0.44) in both top percentile performance but also the variance with respect to random initializations, demonstrating the sensitivity of DNN models to even minor changes.
+With aforementioned differences, the initial reimplementation, further referred to as \emph{baseline 1}\footnote{For explanation what baseline refers to, see section \ref{ch:4.2.1}.} model, achieved validation set correlation of 0.42, 0.48, and 0.3 for its median, 90th percentile, and 10th percentile runs by the end of the 35 000 epochs of training respectively. As shown on figure \ref{fig:5.1.1.1}, this is worse than the fully trained results reported by \citeauthor{antolik} (0.48, 0.5, 0.44) in both top percentile performance but also the variance with respect to random initializations, demonstrating the sensitivity of DNN models to even minor changes.
 
 \begin{figure}[H]
     \centering
@@ -69,7 +69,7 @@ In \emph{experiment 1.2.3}, we revisited the bias initialization scheme. Instead
 
 \subsubsection{Learning rate}\label{ex:1.2.4}
 
-The \emph{experiment 1.2.4} built upon the foundations of our initial experimentation phase\footnote{Refer to section \ref{ch:5.1.0}.} and systematically tested various learning rates for our ADAM optimiser\footnote{While one might assume ADAM should be relatively stable with respect to various learning rates due to its adaptivity based on first and second moments of the gradient, there is little evidence to support this.}. The best performance was achieved by an order of magnitude higher learning rate - 0.001. It reached correlation of (0.5, 0.51, 0.49) by the end of 5 000 epochs of training (Fig. \ref{fig:5.1.2.4}), substantially increasing overall performance, stability, and also convergence speed over both the previous baseline models and the original HSM implementation by \citeauthor{antolik} Further research could be done into dynamic learning rate schedules such as exponential decay rate or step decay. Similarly, both beta and epsilon hyperparameters of ADAM could be explored\footnote{They were kept on their NDN3 defaults for our experiments.}.
+The \emph{experiment 1.2.4} built upon the foundations of our initial experimentation phase\footnote{Refer to section \ref{ch:5.1.0}.} and systematically tested various learning rates for our ADAM optimiser\footnote{While one might assume ADAM should be relatively stable with respect to various learning rates due to its adaptivity based on first and second moments of the gradient, there is little evidence to support this.}. The best performance was achieved by an order of magnitude higher learning rate - 0.001. It reached correlation of (0.5, 0.51, 0.49) by the end of 5 000 epochs of training (Fig. \ref{fig:5.1.2.4}), substantially increasing overall performance, stability, and also convergence speed over both the previous baseline models and the original HSM implementation by \citeauthor{antolik} Further research could be done into dynamic learning rate schedules such as exponential decay rate or step decay. Similarly, both beta and epsilon hyperparameters of ADAM could be explored\footnote{They were kept on their NDN3 defaults for our experiments.} (\cite{2019arXiv191005446C}).
 
 
 \begin{figure}[H]
@@ -81,22 +81,22 @@ The \emph{experiment 1.2.4} built upon the foundations of our initial experiment
 
 \subsubsection{Learning rate and bias initialization: Baseline 3}\label{ex:1.2.5}
 
-Combining improvements uncovered by \emph{experiments 1.2.3} and \emph{1.2.4}, we created a new base model, \emph{baseline 3}. Upon training it fully for all 35 000 epochs, we found that the new baseline converged significantly faster and initially with a substantially smaller spread (figure \ref{fig:5.1.2.5}). By epoch 6 000 it reached a correlation of (0.507, 0.524, 0.499) versus (0.481, 0.5, 0.454) of \emph{baseline 2} model. Beyond that, however, it started to overfit, eventually falling to (0.5, 0.521, 0.492) versus (0.508, 0.521, 0.49) of \emph{baseline 2} at the end of 35 000 epochs of training. 
-
-Since the peak results were comparable and \emph{baseline 3} showed substantially faster convergence, especially in the 5 000 epochs range - which is important for experiments evaluation, we chose to use it for all further experiments, replacing \emph{baseline 2}.
+Combining improvements uncovered by \emph{experiments 1.2.3} and \emph{1.2.4}, we created a new base model, \emph{baseline 3}. Upon training it fully for all 35 000 epochs, we found that the new baseline converged significantly faster and initially with a substantially smaller spread (figure \ref{fig:5.1.2.5}). 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 1.2.5]{Faster convergence, initially smaller spread, and onset of overfitting by epoch 6 000 for baseline 3.}
+    \caption[Experiment 1.2.5]{Faster convergence, initially smaller spread, and onset of overfitting.}
     \label{fig:5.1.2.5}
 \end{figure}
+
+By epoch 6 000 it reached a correlation of (0.507, 0.524, 0.499) versus (0.481, 0.5, 0.454) of \emph{baseline 2} model. Beyond that, however, it started to overfit, eventually falling to (0.5, 0.521, 0.492) versus (0.508, 0.521, 0.49) of \emph{baseline 2} at the end of 35 000 epochs of training. 
+
+Since the peak results were comparable and \emph{baseline 3} showed substantially faster convergence, especially in the 5 000 epochs range - which is important for experiments evaluation, we chose to use it for all further experiments, replacing \emph{baseline 2}.
 
 \subsubsection{Batch size}
 
 Similarly to \textit{1.2.4}, \textit{experiment 1.2.6} systematically reevaluated another training hyperparameter - the batch size. To ensure for fair comparison, throughout the experiment we conserved the number of model updates as opposed to the number of epochs\footnote{For more information about the relationship between the number of updates and batch size, please refer to the section \ref{ch:1.3.2}.}. I.e. with larger batch size and thus less updates per epoch, we scaled the number of epochs up proportionally. For smaller batch sizes, we did not decrease the number of epochs to ensure each data point is evaluated at least a certain number of times.
-
-Figure \ref{fig:5.1.2.6} illustrates that batch size had limited impact, with median run performance of all variants between 0.49-0.51 and comparable stability. Both ends of the spectrum, really small batch sizes (2, 4) and the biggest possible (spanning the entire dataset) performed slightly worse than the \textit{baseline 3}. Otherwise, even relatively large batch sizes (512) reached good peak performance\footnote{Even though not unheard of (\cite{2017arXiv171100489S}), it is still a relatively surprising result (\cite{2017arXiv170508741H}).} and actually proved to be slightly more resilient to overfitting. Due to their computational requirements, however, we chose not to change our training regime for further experiments. The variance in performance between intermediately sized batch (16-128 examples) was not significant enough to draw clear conclusions from.
 
 \begin{figure}[H]
     \centering
@@ -105,11 +105,14 @@ Figure \ref{fig:5.1.2.6} illustrates that batch size had limited impact, with me
     \label{fig:5.1.2.6}
 \end{figure}
 
+Figure \ref{fig:5.1.2.6} illustrates that batch size had limited impact, with median run performance of all variants between 0.49-0.51 and comparable stability. Both ends of the spectrum, really small batch sizes (2, 4) and the biggest possible (spanning the entire dataset) performed slightly worse than the \textit{baseline 3}. Otherwise, even relatively large batch sizes (512) reached good peak performance\footnote{Even though not unheard of (\cite{2017arXiv171100489S}), it is still a relatively surprising result (\cite{2017arXiv170508741H}).} and actually proved to be slightly more resilient to overfitting. Due to their computational requirements, however, we chose not to change our training regime for further experiments. The variance in performance between intermediately sized batch (16-128 examples) was not significant enough to draw clear conclusions from.
+
 \subsection{Regularizations and non-linearity}
 \subsubsection{Dropout}
 
-\textit{Experiment 1.3.1} explored dropout\footnote{Refer to section \ref{ch:1.3.2}.} regularization on the hidden fully connected layer. Since dropout can decrease the effective capacity of the model, we tested three sizes of the hidden layer, the original - 20 \% of the number of output neurons, 30 \% and 40 \%. As Figure \ref{fig:5.1.3.1} illustrates, the best result was achieved by the baseline model without any dropout and with the original hidden layer size. The bigger the dropout, the worse performance. Similarly, for weak or moderate dropout, a larger hidden layer led to lower results. Only for strong dropout (50 \%), a bigger hidden layer outperformed smaller one.
+\textit{Experiment 1.3.1} explored dropout\footnote{Refer to section \ref{ch:1.3.2}.} regularization on the hidden fully connected layer. Since dropout can decrease the effective capacity of the model, we tested three sizes of the hidden layer, the original - 20 \% of the number of output neurons, 30 \% and 40 \%. 
 
+As Figure \ref{fig:5.1.3.1} illustrates, the best result was achieved by the baseline model without any dropout and with the original hidden layer size. The bigger the dropout, the worse performance. Similarly, for weak or moderate dropout, a larger hidden layer led to lower results. Only for strong dropout (50 \%), a bigger hidden layer outperformed smaller one.
 
 \begin{figure}[H]
     \centering
@@ -127,8 +130,7 @@ Our working hypothesis for these results is that even light dropout on the hidde
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 1.3.2]{Influence of L1 / L2 regularization on both fully connected layers.
-.}
+    \caption[Experiment 1.3.2]{Influence of L1 / L2 regularization on both fully connected layers.}
     \label{fig:5.1.3.2}
 \end{figure}
 
@@ -173,6 +175,7 @@ That concludes the initial set of experiments focused on training hyperparameter
 
 We also observed that both the median performance and the stability of a model with respect to parameters initializations can differ widely, even for the same or very similar architecture. Through non-architectural changes only\footnote{Adding an L2 regularization on the hidden layer influences only parameters fitting, and so we do not consider it an architectural change in this context.}, we managed to decrease the difference between 90th and 10th percentile runs from 0.18, with \textit{baseline 1} model, to 0.03 of \textit{baseline 4}, while also increasing the median run performance by 0.05 (Fig. \ref{fig:5.1.5}, table \ref{tab:5.1.5}). As a byproduct, this also revealed that analysing a single run with a particular random initialization might paint an incorrect picture. A problem best shown by the 10th percentile run of an \textit{experiment 1.4.1} instance - that did not train at all while its 50th percentile run fared decently, but by far not limited to only our model or dataset (\cite{2019arXiv190910447M}).
 
+\setlength{\abovecaptionskip}{10pt plus 0pt minus 0pt} % Chosen fairly arbitrarily
 \begin{table}[H]
     \renewcommand{\arraystretch}{1.0}
     \centering
@@ -191,8 +194,7 @@ We also observed that both the median performance and the stability of a model w
     \renewcommand{\arraystretch}{1.0}
 \end{table}
 \footnotetext{For the \citeauthor{antolik} model we only have the end of training data.}
-
-Lastly, we significantly improved convergence speed. While the original model by Antolik et al. did 1 800 000 000 datapoint evaluations\footnote{100 epochs, each with 10 000 evaluations, using the whole dataset (1800 in case of region 1) batch.}, our model managed with 1/200th of that: 9 000 000, assuming training for 5 000 epochs - the setting we use to evaluate experiments. If we limited ourselves further, to only 1 000 epochs - still getting a decent performance of (0.514, 0.531, 0.498) on baseline 4 model, it would only need 1/1000th of data-point evaluations. While less impressive, our model is better even in terms of the number of model updates - with requiring roughly half of the original (1 000 000 vs 565 000\footnote{Assuming 5 000 epochs and batch size 16.}) implementation.
+\setlength{\abovecaptionskip}{0pt plus 0pt minus 0pt} % Chosen fairly arbitrarily
 
 \begin{figure}[H]
     \centering
@@ -201,6 +203,7 @@ Lastly, we significantly improved convergence speed. While the original model by
     \label{fig:5.1.5}
 \end{figure}
 
+Lastly, we significantly improved convergence speed. While the original model by Antolik et al. did 1 800 000 000 datapoint evaluations\footnote{100 epochs, each with 10 000 evaluations, using the whole dataset (1800 in case of region 1) batch.}, our model managed with 1/200th of that: 9 000 000, assuming training for 5 000 epochs - the setting we use to evaluate experiments. If we limited ourselves further, to only 1 000 epochs - still getting a decent performance of (0.514, 0.531, 0.498) on baseline 4 model, it would only need 1/1000th of data-point evaluations. While less impressive, our model is better even in terms of the number of model updates - with requiring roughly half of the original (1 000 000 vs 565 000\footnote{Assuming 5 000 epochs and batch size 16.}) implementation.
 
 \section{Variations on the filter and hidden layers}
 In this section, we examine larger architectural changes of the HSM model, focusing on its first two layers - filter and hidden. We compare biologically inspired techniques that feature hard regularizations to more generic methods from classical deep learning with soft regularizations. We start with fully connected layers, drawing parallels to classical LNLN and LN models, and then move to convolution layer, convolutional variants of the DoG layer, and also the separable layer introduced by \cite{klindt} Unless explicitly specified, all experiments in this section were conducted with a \textit{baseline 4} model.
@@ -221,13 +224,13 @@ While this means we can construct an LNLN model that is computationally exactly 
     \label{fig:5.2.1.1}
 \end{figure}
 
-The best instance achieved validation set correlation of (0.474, 0.484, 0.45) after 5 000 epochs (Fig. \ref{fig:5.2.1.1}). Despite being worse than \textit{baseline 4} (0.51, 0.527, 0.502), it was comparable to less fine tuned\footnote{While we tried to find optimal hyper-parameters, we did not have enough time to be confident saying this is the best or even close to the best result possible with this architecture. Much more time was spent on properly tuning the HSM architecture.} versions of our model, for example the \textit{baseline 2} (0.482, 0.5, 0.447). We believe this result is good evidence for the hypothesis that the biological constraints of HSM only serve as well fitting explicit regularizations that make the model more stable with respect to hyperparameters, but are not a necessity to achieve good results. A finding already supported by the state of the art results achieved by \cite{klindt} with a relatively more generic architecture.
+The best instance achieved validation set correlation of (0.474, 0.484, 0.45) after 5 000 epochs (Fig. \ref{fig:5.2.1.1}). Despite being worse than \textit{baseline 4} (0.51, 0.527, 0.502), it was comparable to less fine tuned\footnote{While we tried to find optimal hyper-parameters, we did not have enough time to be confident saying this is the best or even close to the best result possible with this architecture. Significantly more time was spent on properly tuning the HSM architecture.} versions of our model, for example the \textit{baseline 2} (0.482, 0.5, 0.447). We believe this result is good evidence for the hypothesis that the biological constraints of HSM only serve as well fitting explicit regularizations that make the model more stable with respect to hyperparameters, but are not a necessity to achieve good results. A finding already supported by the state of the art results achieved by \cite{klindt} with a relatively more generic architecture.
 
 A few more noteworthy observations. Moderately strong Laplacian regularization on the hidden layer was paramount. Without it, the model started overfitting very quickly and never recovered. The smaller hidden layer version, with the number of filters equivalent to 10 \% of the number of output neurons, had very similar performance characteristics to the larger version but was worse across the board. Too strong regularization, both on the hidden and the output layer, also caused lower performance.
 
 \subsubsection{LN model}
 
-\textit{Experiment 2.1.2} tested an architecture equivalent to a simple LN model. The first and only layer featured a spatial Laplacian regularization, with its strength being the only free hyperparameter of the architecture. As shown on figure \ref{fig:5.2.1.2}, the results (0.282, 0.296, 0.265) were substantially lower than those of our previously tested and more computationally complex models and on-par with the performance of an analytically optimized version of an LN model with Laplacian regularization reported by \cite{antolik} (0.31). The same as in the previous experiment, some regularization proved to be a necessity while too strong led to poor, albeit very consistent, performance.
+\textit{Experiment 2.1.2} tested an architecture equivalent to a simple LN model. The first and only layer featured a spatial Laplacian regularization, with its strength being the only free hyperparameter of the architecture. 
 
 \begin{figure}[H]
     \centering
@@ -236,6 +239,8 @@ A few more noteworthy observations. Moderately strong Laplacian regularization o
     \label{fig:5.2.1.2}
 \end{figure}
 \footnotetext{We only have fully trained data for the \citeauthor{antolik} rLN model. We thus show the final mean performance and its variance for all time points.}
+
+As shown on figure \ref{fig:5.2.1.2}, the results (0.282, 0.296, 0.265) were substantially lower than those of our previously tested and more computationally complex models and on-par with the performance of an analytically optimized version of an LN model with Laplacian regularization reported by \cite{antolik} (0.31). The same as in the previous experiment, some regularization proved to be a necessity while too strong led to poor, albeit very consistent, performance.
 
 \subsection{Convolutional and separable models}
 \subsubsection{Convolutions instead of DoG}
@@ -274,18 +279,18 @@ With \textit{experiment 2.2.3}, we tested two further variants of this architect
 
 The rationale behind a convolutional variant of the DoG layer was as follows. Optimizing the locations of centers of difference-of-Gaussians within the DoG layer through gradient descent is not optimal. If the random initialization puts the center completely outside of where it should be, it is unlikely\footnote{Based on our very limited testing of learning properties of the DoG layer. To draw any conclusions, we suggest further research on the interaction between gradient descent based optimizers and the DoG layer.} the gradient for respective location parameters overweights the rest and changes the position substantially\footnote{Fortunately, given the number of filters and size of our input images, this never proved to be an issue on our dataset.}. At the same time, the locational invariance of V1 neurons leveraged through convolution layers by Klindt et al. and Ecker et al. should work with explicitly parameterized difference-of-Gaussians filters just as well as with generic filters.
 
-Both versions, with a fully connected as well as a separable hidden layer, achieved a similar level of performance (Fig. \ref{fig:5.2.2.3}), (0.482, 0.496, 0.466) and (0.483, 0.502, 0.465) respectively, that was comparable to a number of recent models such as the convolution variants \textit{(2.2.2)}. The best instance of the separable version reached a peak of (0.498, 0.51, 0.484) and showed signs of overfitting. For both versions, small 3pixels wide DoG filters did not perform well\footnote{Similar to the separable version of convolutional variant \textit{(2.2.2)} but unlike the fully connected version of convolution variant \textit{(2.2.1)}. A very plausible explanation is that 3x3 pixels is not enough to fully realize a difference-of-Gaussians filter.}, with the widest 15pixels getting the best results. The number of filters had, as in the previous experiments, relatively low influence with 30 filters achieving initially higher results and then falling, likely due to overfitting.
-
-Notably, the instances with only 4 filters fared substantially worse than their 9 filter counterparts. This was a relatively surprising result. Since 9 filters were enough for a non-convolutional DoG variant, where each filter contains a single difference-of-Gaussians at a specific location, we assumed that the convolutional variant that applies each difference-of-Gaussians filter at multiple locations might work with a smaller number of filters. In essence, we assumed that the computation requires a very few types of filters applied at multiple locations instead of a very specific filter for each of relatively few locations. This result, instead, suggests nearby neurons within V1 indeed pool from a rather limited number of LGN inputs that are backed by very specific locations and receptive field topologies within the visual field. We suggest further investigation of the trained weights of this architecture and comparison to the fully connected versions as well as the original HSM version with plain DoG layer.
-
-For the fully connected versions, both L1 and max regularizations worked similarly. The separable version performed best with a light L1 regularization, with L2 overwhelming the training.
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
     \caption[Experiment 2.2.3]{Convolutional variants of the DoG layer.}
     \label{fig:5.2.2.3}
 \end{figure}
+
+Both versions, with a fully connected as well as a separable hidden layer, achieved a similar level of performance (Fig. \ref{fig:5.2.2.3}), (0.482, 0.496, 0.466) and (0.483, 0.502, 0.465) respectively, that was comparable to a number of recent models such as the convolution variants \textit{(2.2.2)}. The best instance of the separable version reached a peak of (0.498, 0.51, 0.484) and showed signs of overfitting. For both versions, small 3pixels wide DoG filters did not perform well\footnote{Similar to the separable version of convolutional variant \textit{(2.2.2)} but unlike the fully connected version of convolution variant \textit{(2.2.1)}. A plausible explanation is that 3x3 pixels is not enough to fully realize a difference-of-Gaussians filter.}, with the widest 15pixels getting the best results. The number of filters had, as in the previous experiments, relatively low influence with 30 filters achieving initially higher results and then falling, likely due to overfitting.
+
+Notably, the instances with only 4 filters fared substantially worse than their 9 filter counterparts. This was a relatively surprising result. Since 9 filters were enough for a non-convolutional DoG variant, where each filter contains a single difference-of-Gaussians at a specific location, we assumed that the convolutional variant that applies each difference-of-Gaussians filter at multiple locations might work with a smaller number of filters. In essence, we assumed that the computation requires a very few types of filters applied at multiple locations instead of a very specific filter for each of relatively few locations. This result, instead, suggests nearby neurons within V1 indeed pool from a rather limited number of LGN inputs that are backed by very specific locations and receptive field topologies within the visual field. We suggest further investigation of the trained weights of this architecture and comparison to the fully connected versions as well as the original HSM version with plain DoG layer.
+
+For the fully connected versions, both L1 and max regularizations worked similarly. The separable version performed best with a light L1 regularization, with L2 overwhelming the training.
 
 \subsubsection{Convolutional variants without non-linearity}
 
@@ -302,9 +307,11 @@ While still lower than our baseline model, the linear version of a fully connect
 
 \subsubsection{Reimplementing what/where model}
 
-Entirely as an exercise, with \textit{experiment 2.2.5} we tried to reimplement the what/\-where model architecture as introduced by \cite{klindt} Due to it not being the focus of our work, we limited ourselves to only information published in the paper without consulting either of the available implementations\footnote{\href{https://github.com/david-klindt/NIPS2017}{https://github.com/david-klindt/NIPS2017}, \href{https://github.com/aecker/cnn-sys-ident/tree/master/analysis/iclr2019}{https://github.com/aecker/cnn-sys-ident/tree/master/analysis/iclr2019}.}. Given that, we had to grid-search some hyperparameters such as regularization strengths or convolution strides and also chose to use our training regime. 
+Entirely as an exercise, with \textit{experiment 2.2.5} we tried to reimplement the what/\-where model architecture as introduced by \cite{klindt} Due to it not being the focus of our work, we limited ourselves to only information published in the paper without consulting either of the available implementations\footnote{\href{https://github.com/david-klindt/NIPS2017}{https://github.com/david-klindt/NIPS2017}, \href{https://github.com/aecker/cnn-sys-ident/tree/master/analysis/iclr2019}{https://github.com/aecker/cnn-sys-ident/\-tree/master/analysis/iclr2019}.}. Given that, we had to grid-search some hyperparameters such as regularization strengths or convolution strides and also chose to use our training regime. 
 
 Further, we replicated the architecture using only techniques already available in NDN3, which forced us to deviate from the original in a number of ways. Instead of the in-NDN3-unavailable group-sparsity regularization on the 3 convolutional layers cascade, we tested max and L2 regularizations. For the same reason, we had to leave out batch normalisation which is originally part of each convolutional layer of the model. Generally, our version was relatively different in terms of things that influence training but was equivalent inference architecture wise.
+
+The best instance reached peak validation set correlation of (0.48, 0.497, 0.461) and (0.479, 0.494, 0.455) at the end of training (Fig. \ref{fig:5.2.2.5}). A result on par with our shallower convolution variant of the HSM model (experiment 2.2.2) but still below both our baseline 4 model and especially the published result of 0.55 of the original \citeauthor{klindt} version. As this was a sideline exercise, we did not dedicate further resources to properly reimplement the model. However, we still believe it can serve as evidence that hyperparameters and only training influencing parts of the model can have more substantial impact than larger architectural differences.
 
 \begin{figure}[H]
     \centering
@@ -312,8 +319,6 @@ Further, we replicated the architecture using only techniques already available 
     \caption[Experiment 2.2.5]{Comparing the best reimplemented what/where instance to various other model architectures.}
     \label{fig:5.2.2.5}
 \end{figure}
-
-The best instance reached peak validation set correlation of (0.48, 0.497, 0.461) and (0.479, 0.494, 0.455) at the end of training (Fig. \ref{fig:5.2.2.5}). A result on par with our shallower convolution variant of the HSM model (experiment 2.2.2) but still below both our baseline 4 model and especially the published result of 0.55 of the original \citeauthor{klindt} version. As this was a sideline exercise, we did not dedicate further resources to properly reimplement the model. However, we still believe it can serve as evidence that hyperparameters and only training influencing parts of the model can have more substantial impact than larger architectural differences.
 
 In addition to hyperparameters that were in accordance with the paper, we also tested a few other variants. Interestingly, with this architecture L1 regularization worked better than L2 on the output layer. A complete opposite to what we observed on our HSM based models. We also observed that 2-pixel strides on the convolutional layers worked consistently better than half-the-filter-size strides. A result suggesting fine-tuned positioning of first layer filters is important.
 
@@ -323,18 +328,19 @@ The theme of this section’s experiments could be summarized as testing various
 
 This result was, in a way, expected. All tested alterations are theoretically computationally equivalent. Or rather, all variants can learn to compute whatever the plain version of the DoG layer can. Its convolutional variant is just a positional relaxation of it, the normal convolutional layer sheds the hard regularization constraint on the filter weights, and the LNLN variant just goes one additional step further removing the factoring into two layers. A more surprising observation was that the convergence speed and its progression were also similar. After all, the main difference was that certain variations imposed priors in the form of hard/soft regularization on the layers, which we assumed would heavily impact convergence. While a more thorough investigation would be needed, the similar but not better performance of alternatives serves as evidence that the plain difference-of-Gaussians restriction on the first layer filter might be correct but also is not necessary.
 
-The small observed difference between the variation with a fully connected hidden layer and a variant with a separable layer was also relatively surprising Based on the improvements reported by \cite{klindt} on their architecture, where using it increased the best-achieved performance from 0.47 to 0.55 on region 1, we were surprised by the, in comparison, smaller improvements on our plain convolution variant and almost negligible differences on the convolutional DoG version. It is, however, important to note that there are relatively big architectural differences between those two architectures, such as 1 filter versus 3 filters cascade and an additional fully connected output layer after the readout layer.
-
-Both of the aforementioned results could be further researched. It would be especially interesting to compare the trained weights of the first layer filters and second layer masks between individual variants and figure out if they only lead to comparable levels of performance or if they are, in fact, equivalent computation-wise. Going even deeper, a comprehensive comparison between the hard regularizations - such as the of DoG layer - and various soft regularizations like a Laplacian regularization on a convolutional layer, could also lead to interesting discoveries. 
-
-Similarly, the question of why exactly does adding a non-linearity after the first layer cause diminished performance on our HSM-based architecture but seems to work for deeper models, could also be explored further in at least two ways. First, as a general ML research on the ability of a smaller network to deal with a redundant non-linearity. And second, as a more neuroscience inspired investigation into the question of whether the computation being modeled might actually be as simple as requiring only two non-linearities, with the goal of informing our understanding of visual computation processes.
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
     \caption[Various architectures on region 1]{Various architectures fully trained on region 1.}
     \label{fig:5.3.2.1_1}
 \end{figure}
+
+The small observed difference between the variation with a fully connected hidden layer and a variant with a separable layer was also relatively surprising Based on the improvements reported by \cite{klindt} on their architecture, where using it increased the best-achieved performance from 0.47 to 0.55 on region 1, we were surprised by the, in comparison, smaller improvements on our plain convolution variant and almost negligible differences on the convolutional DoG version. It is, however, important to note that there are relatively big architectural differences between those two architectures, such as 1 filter versus 3 filters cascade and an additional fully connected output layer after the readout layer.
+
+Both of the aforementioned results could be further researched. It would be especially interesting to compare the trained weights of the first layer filters and second layer masks between individual variants and figure out if they only lead to comparable levels of performance or if they are, in fact, equivalent computation-wise. Going even deeper, a comprehensive comparison between the hard regularizations - such as the of DoG layer - and various soft regularizations like a Laplacian regularization on a convolutional layer, could also lead to interesting discoveries. 
+
+Similarly, the question of why exactly does adding a non-linearity after the first layer cause diminished performance on our HSM-based architecture but seems to work for deeper models, could also be explored further in at least two ways. First, as a general ML research on the ability of a smaller network to deal with a redundant non-linearity. And second, as a more neuroscience inspired investigation into the question of whether the computation being modeled might actually be as simple as requiring only two non-linearities, with the goal of informing our understanding of visual computation processes.
+
 
 In agreement with our observations regarding high-level architecture versus hyperparameters tuning and training time details, we also did not manage to achieve published results with our relatively close reimplementation of the what/where model by Klindt et al. This was mostly due to it being just an afterthought exercise without enough resources allocated to it, but it can, in our opinion, still serve as evidence of the importance of careful tuning. 
 
@@ -386,6 +392,7 @@ We finish this chapter with \textit{experiment 3.2.1} that assessed various arch
 
 The baseline models with plain DoG layer outperformed all other variants across all three regions (Figs: \ref{fig:5.3.2.1_1}, \ref{fig:5.3.2.1_2}, \ref{fig:5.3.2.1_3}, table \ref{tab:5.3.2.1}). However, the improvements of \textit{baseline 4} with respect to both the original reported Antolik et al. implementation and our \textit{baseline 2} model did not translate to regions 2 and 3. Especially on region 2, the difference between \textit{baseline 4} (0.414, 0.434, 0.407) and numbers reported by Antolik et al. (0.412, 0.435, 0.382) was negligible for 90th and 50th percentile, with improvements only in the 10th percentile run. On region 3, the baseline models fared better but \textit{baseline 2} model actually outperformed \textit{baseline 4}.
 
+\setlength{\abovecaptionskip}{10pt plus 0pt minus 0pt} % Chosen fairly arbitrarily
 \begin{table}[H]
     \renewcommand{\arraystretch}{1.0}
     \centering
@@ -403,6 +410,7 @@ The baseline models with plain DoG layer outperformed all other variants across 
     \label{tab:5.3.2.1}
     \renewcommand{\arraystretch}{1.0}
 \end{table}
+\setlength{\abovecaptionskip}{0pt plus 0pt minus 0pt} % Chosen fairly arbitrarily
 
 While on region 1 all models, apart from \textit{baseline 4}, fared relatively similarly - with 50th percentile runs in the range of 0.476-0.496, on regions 2 and 3 there were two separate groups. With higher performance, there were the variants with plain DoG layer (baselines 2, 4 and the original \cite{antolik}\footnote{Further referred to as the HSM architecture}) and with a significant gap and lower performance all the other architectures (convolution, convolutional DoG, and LNLN). The relative performance in the lower group was not stable across regions either, with convolutional DoG model performing worst on region 2 but very comparably to others on regions 3 and 1. 
 
@@ -433,4 +441,6 @@ This suggests the intriguing hypothesis that the pooling of the data across regi
 
 Our conclusion is that in our hands, pooling of data across multiple recordings does not impart advantage over fitting models individually. It is, however, important to emphasize that this conclusion is strictly specific to the data available in this thesis and to our current level of understanding of both the dataset and the modeled computation.
 
-Second, we found heterogeneity of outcomes when testing various architectures, fine-tuned on region 1 in the previous sections, on regions 2 and 3. Our improvements of the HSM architecture with baseline models proved not to be universal, with, for example, baseline 2 achieving higher results than \textit{baseline 4} on region 3. We also found that architectures with a plain DoG layer were generally more robust when it comes to transferring them to similar, but not equal, datasets without further hyperparameters fine-tuning. In contrast to this finding, we did not observe similar benefit to either the convolutional DoG variant or plain convolution variant with a separable readout layer over a simple LNLN architecture.
+Second, we found heterogeneity of outcomes when testing various architectures, fine-tuned on region 1 in the previous sections, on regions 2 and 3. Our improvements of the HSM architecture with baseline models proved not to be universal, with, for example, baseline 2 achieving higher than \textit{baseline 4} on region 3. We also found that architectures with a plain DoG layer were generally more robust when it comes to transferring them to similar, but not equal, datasets without further hyperparameters fine-tuning. In contrast to this finding, we did not observe similar benefit to either the convolutional DoG variant or plain convolution variant with a separable readout layer over a simple LNLN architecture.
+
+\setlength{\abovecaptionskip}{10pt plus 0pt minus 0pt} % Chosen fairly arbitrarily
