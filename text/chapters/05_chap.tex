@@ -27,7 +27,7 @@ With aforementioned differences, the initial reimplementation, further referred 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.1.1.1]{Validation set correlation of first baseline model versus the original \cite{antolik} implementation on region 1\protect\footnotemark.}
+    \caption[Experiment 1.1.1]{Validation set correlation of first baseline model versus the original \cite{antolik} implementation on region 1\protect\footnotemark.}
     \label{fig:5.1.1.1}
 \end{figure}
 \footnotetext{We only have fully trained data for the original implementation. We thus show the final mean performance and its variance for all time points.}
@@ -39,7 +39,7 @@ Informed by the recommended\footnote{\cite{10.5555/645754.668382}} practise of d
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.1.2.1]{Results of baseline 1 versus normalised inputs\protect\footnotemark.}
+    \caption[Experiment 1.2.1]{Results of baseline 1 versus normalised inputs\protect\footnotemark.}
     \label{fig:5.1.2.1}
 \end{figure}
 \footnotetext{Unlike the previous figure, this is restricted to 5 000 epochs and 10 runs per experiment instance (refer to section \ref{ch:4.4}).}
@@ -49,7 +49,7 @@ Figure \ref{fig:5.1.2.1} showcases the dramatic improvement both of these change
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.1.2.1 2]{Baseline 1, baseline 2, and \citeauthor{antolik} implementation. Showcasing the effect of small non-architectural changes.}
+    \caption[Experiment 1.2.1 2]{Baseline 1, baseline 2, and \citeauthor{antolik} implementation. Showcasing the effect of small non-architectural changes.}
     \label{fig:5.1.2.1_2}
 \end{figure}
 
@@ -63,7 +63,7 @@ In \emph{experiment 1.2.3}, we revisited the bias initialization scheme. Instead
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiments 5.1.2.2 and 5.1.2.3]{Impact of gaussian noise and truncated normal initialization of biases (experiments \ref{ex:1.2.2} and \ref{ex:1.2.3}).}
+    \caption[Experiments 1.2.2 and 1.2.3]{Impact of gaussian noise and truncated normal initialization of biases (experiments \ref{ex:1.2.2} and \ref{ex:1.2.3}).}
     \label{fig:5.1.2.2}
 \end{figure}
 
@@ -75,7 +75,7 @@ The \emph{experiment 1.2.4} built upon the foundations of our initial experiment
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.1.2.4]{Impact of different learning rates.}
+    \caption[Experiment 1.2.4]{Impact of different learning rates.}
     \label{fig:5.1.2.4}
 \end{figure}
 
@@ -88,7 +88,7 @@ Since the peak results were comparable and \emph{baseline 3} showed substantiall
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.1.2.5]{Faster convergence, initially smaller spread, and onset of overfitting by epoch 6 000 for baseline 3.}
+    \caption[Experiment 1.2.5]{Faster convergence, initially smaller spread, and onset of overfitting by epoch 6 000 for baseline 3.}
     \label{fig:5.1.2.5}
 \end{figure}
 
@@ -101,7 +101,7 @@ Figure \ref{fig:5.1.2.6} illustrates that batch size had limited impact, with me
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.1.2.6]{Various batch sizes. Training epochs are normalized across instances. 0 being the 0th epoch, 1 corresponding to the last training epoch for that particular instance.}
+    \caption[Experiment 1.2.6]{Various batch sizes. Training epochs are normalized across instances. 0 being the 0th epoch, 1 corresponding to the last training epoch for that particular instance.}
     \label{fig:5.1.2.6}
 \end{figure}
 
@@ -114,7 +114,7 @@ Figure \ref{fig:5.1.2.6} illustrates that batch size had limited impact, with me
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.1.3.1]{Performance loss incurred by dropout regularization (dropout probability) on the hidden layer.}
+    \caption[Experiment 1.3.1]{Performance loss incurred by dropout regularization (dropout probability) on the hidden layer.}
     \label{fig:5.1.3.1}
 \end{figure}
 
@@ -127,7 +127,7 @@ Our working hypothesis for these results is that even light dropout on the hidde
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.1.3.2]{Influence of L1 / L2 regularization on both fully connected layers.
+    \caption[Experiment 1.3.2]{Influence of L1 / L2 regularization on both fully connected layers.
 .}
     \label{fig:5.1.3.2}
 \end{figure}
@@ -141,7 +141,7 @@ Figure \ref{fig:5.1.3.3} illustrates that moderate L2 regularization on the outp
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.1.3.3]{Impact of L2 regularization on the output layer with full training.}
+    \caption[Experiment 1.3.3]{Impact of L2 regularization on the output layer with full training.}
     \label{fig:5.1.3.3}
 \end{figure}
 
@@ -159,7 +159,7 @@ The idea behind the linear scale layer was that if there was an explicit layer w
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.1.4.1]{Impact of input scaling and explicit linear scale layer.}
+    \caption[Experiment 1.4.1]{Impact of input scaling and explicit linear scale layer.}
     \label{fig:5.1.4.1}
 \end{figure}
 
@@ -217,7 +217,7 @@ While this means we can construct an LNLN model that is computationally exactly 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.2.1.1]{Selected LNLN instances versus baseline 4 and 2.}
+    \caption[Experiment 2.1.1]{Selected LNLN instances versus baseline 4 and 2.}
     \label{fig:5.2.1.1}
 \end{figure}
 
@@ -232,7 +232,7 @@ A few more noteworthy observations. Moderately strong Laplacian regularization o
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.2.1.2]{Performance of LN-like model instances. Only a fully trained performance is available for the rLN model reported by \citeauthor{antolik}\protect\footnotemark.}
+    \caption[Experiment 2.1.2]{Performance of LN-like model instances. Only a fully trained performance is available for the rLN model reported by \citeauthor{antolik}\protect\footnotemark.}
     \label{fig:5.2.1.2}
 \end{figure}
 \footnotetext{We only have fully trained data for the \citeauthor{antolik} rLN model. We thus show the final mean performance and its variance for all time points.}
@@ -245,7 +245,7 @@ In \textit{experiment 2.2.1}, we replaced the first DoG layer with a plain convo
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.2.2.1]{Convolution layer with regularization instead of DoG layer.}
+    \caption[Experiment 2.2.1]{Convolution layer with regularization instead of DoG layer.}
     \label{fig:5.2.2.1}
 \end{figure}
 
@@ -262,7 +262,7 @@ These changes led to better results (Fig. \ref{fig:5.2.2.2}), with the best inst
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.2.2.2]{Convolution and separable hidden layer.}
+    \caption[Experiment 2.2.2]{Convolution and separable hidden layer.}
     \label{fig:5.2.2.2}
 \end{figure}
 
@@ -283,7 +283,7 @@ For the fully connected versions, both L1 and max regularizations worked similar
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.2.2.3]{Convolutional variants of the DoG layer.}
+    \caption[Experiment 2.2.3]{Convolutional variants of the DoG layer.}
     \label{fig:5.2.2.3}
 \end{figure}
 
@@ -296,7 +296,7 @@ While still lower than our baseline model, the linear version of a fully connect
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.2.2.4]{Filter layer non-linearity and the convolutional DoG variant.}
+    \caption[Experiment 2.2.4]{Filter layer non-linearity and the convolutional DoG variant.}
     \label{fig:5.2.2.4}
 \end{figure}
 
@@ -309,7 +309,7 @@ Further, we replicated the architecture using only techniques already available 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.2.2.5]{Comparing the best reimplemented what/where instance to various other model architectures.}
+    \caption[Experiment 2.2.5]{Comparing the best reimplemented what/where instance to various other model architectures.}
     \label{fig:5.2.2.5}
 \end{figure}
 
@@ -358,7 +358,7 @@ The best instance of the model trained on all three regions pooled together achi
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.3.1.1]{Models trained on regions 1,2,3 pooled together\protect\footnotemark.}
+    \caption[Experiment 3.1.1]{Models trained on regions 1,2,3 pooled together\protect\footnotemark.}
     \label{fig:5.3.1.1_1}
 \end{figure}
 \footnotetext{Shared model represents a single model trained on data pooled together, the ensemble is just a weighted average of three separate models.}
@@ -368,7 +368,7 @@ In addition to using all three regions, we also run the same experiment with onl
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_dummy}
-    \caption[Experiment 5.3.1.1 2]{Models trained on regions 1,2 pooled together\protect\footnotemark.}
+    \caption[Experiment 3.1.1 2]{Models trained on regions 1,2 pooled together\protect\footnotemark.}
     \label{fig:5.3.1.1_2}
 \end{figure}
 \footnotetext{Shared model represents a single model trained on data pooled together, the ensemble is just a weighted average of two separate models.}
