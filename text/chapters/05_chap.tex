@@ -26,7 +26,7 @@ With aforementioned differences, the initial reimplementation, further referred 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_1_1_1}
     \caption[Experiment 1.1.1]{Validation set correlation of first baseline model versus the original \cite{antolik} implementation on region 1\protect\footnotemark.}
     \label{fig:5.1.1.1}
 \end{figure}
@@ -38,7 +38,7 @@ Informed by the recommended\footnote{\cite{10.5555/645754.668382}} practise of d
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_1_2_1}
     \caption[Experiment 1.2.1]{Results of baseline 1 versus normalised inputs\protect\footnotemark.}
     \label{fig:5.1.2.1}
 \end{figure}
@@ -48,7 +48,7 @@ Figure \ref{fig:5.1.2.1} showcases the dramatic improvement both of these change
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_1_2_1_2}
     \caption[Experiment 1.2.1 2]{Baseline 1, baseline 2, and \citeauthor{antolik} implementation. Showcasing the effect of small non-architectural changes.}
     \label{fig:5.1.2.1_2}
 \end{figure}
@@ -62,7 +62,7 @@ In \emph{experiment 1.2.3}, we revisited the bias initialization scheme. Instead
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_1_2_2}
     \caption[Experiments 1.2.2 and 1.2.3]{Impact of gaussian noise and truncated normal initialization of biases (experiments \ref{ex:1.2.2} and \ref{ex:1.2.3}).}
     \label{fig:5.1.2.2}
 \end{figure}
@@ -74,7 +74,7 @@ The \emph{experiment 1.2.4} built upon the foundations of our initial experiment
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_1_2_4}
     \caption[Experiment 1.2.4]{Impact of different learning rates.}
     \label{fig:5.1.2.4}
 \end{figure}
@@ -85,7 +85,7 @@ Combining improvements uncovered by \emph{experiments 1.2.3} and \emph{1.2.4}, w
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_1_2_5}
     \caption[Experiment 1.2.5]{Faster convergence, initially smaller spread, and onset of overfitting.}
     \label{fig:5.1.2.5}
 \end{figure}
@@ -100,7 +100,7 @@ Similarly to \textit{1.2.4}, \textit{experiment 1.2.6} systematically reevaluate
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_1_2_6}
     \caption[Experiment 1.2.6]{Various batch sizes. Training epochs are normalized across instances. 0 being the 0th epoch, 1 corresponding to the last training epoch for that particular instance.}
     \label{fig:5.1.2.6}
 \end{figure}
@@ -116,7 +116,7 @@ As Figure \ref{fig:5.1.3.1} illustrates, the best result was achieved by the bas
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_1_3_1}
     \caption[Experiment 1.3.1]{Performance loss incurred by dropout regularization (dropout probability) on the hidden layer.}
     \label{fig:5.1.3.1}
 \end{figure}
@@ -129,7 +129,7 @@ Our working hypothesis for these results is that even light dropout on the hidde
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_1_3_2}
     \caption[Experiment 1.3.2]{Influence of L1 / L2 regularization on both fully connected layers.}
     \label{fig:5.1.3.2}
 \end{figure}
@@ -142,7 +142,7 @@ Figure \ref{fig:5.1.3.3} illustrates that moderate L2 regularization on the outp
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_1_3_3}
     \caption[Experiment 1.3.3]{Impact of L2 regularization on the output layer with full training.}
     \label{fig:5.1.3.3}
 \end{figure}
@@ -160,7 +160,7 @@ The idea behind the linear scale layer was that if there was an explicit layer w
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_1_4_1}
     \caption[Experiment 1.4.1]{Impact of input scaling and explicit linear scale layer.}
     \label{fig:5.1.4.1}
 \end{figure}
@@ -198,7 +198,7 @@ We also observed that both the median performance and the stability of a model w
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_1_5_1}
     \caption[Baseline models on region 1]{Evaluation set correlation on region 1 across baseline models.}
     \label{fig:5.1.5}
 \end{figure}
@@ -219,7 +219,7 @@ While this means we can construct an LNLN model that is computationally exactly 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_2_1_1}
     \caption[Experiment 2.1.1]{Selected LNLN instances versus baseline 4 and 2.}
     \label{fig:5.2.1.1}
 \end{figure}
@@ -234,7 +234,7 @@ A few more noteworthy observations. Moderately strong Laplacian regularization o
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_2_1_2}
     \caption[Experiment 2.1.2]{Performance of LN-like model instances. Only a fully trained performance is available for the rLN model reported by \citeauthor{antolik}\protect\footnotemark.}
     \label{fig:5.2.1.2}
 \end{figure}
@@ -249,7 +249,7 @@ In \textit{experiment 2.2.1}, we replaced the first DoG layer with a plain convo
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_2_2_1}
     \caption[Experiment 2.2.1]{Convolution layer with regularization instead of DoG layer.}
     \label{fig:5.2.2.1}
 \end{figure}
@@ -266,7 +266,7 @@ These changes led to better results (Fig. \ref{fig:5.2.2.2}), with the best inst
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_2_2_2}
     \caption[Experiment 2.2.2]{Convolution and separable hidden layer.}
     \label{fig:5.2.2.2}
 \end{figure}
@@ -281,7 +281,7 @@ The rationale behind a convolutional variant of the DoG layer was as follows. Op
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_2_2_3}
     \caption[Experiment 2.2.3]{Convolutional variants of the DoG layer.}
     \label{fig:5.2.2.3}
 \end{figure}
@@ -296,31 +296,31 @@ For the fully connected versions, both L1 and max regularizations worked similar
 
 \textit{Experiment 2.2.4} investigated the effect of the nonlinearity after the convolutional DoG filter layer on both variants, with a separable as well as fully connected hidden layer. In contrast to convolutional models by others such as those reported by \cite{klindt} or \cite{ecker}, where multiple nonlinearities worked well, for our architecture the variants without a nonlinearity achieved slightly higher results.
 
-While still lower than our baseline model, the linear version of a fully connected hidden layer variant achieved (0.498, 0.516, 0.448) versus (0.482, 0.496, 0.466) of the nonlinear version (Fig. \ref{fig:5.2.2.4}). And the separable version reached (0.495, 0.509, 0.462) versus (0.483, 0.502, 0.465) of its nonlinear counterpart. Surprisingly, a variant with 7 pixels wide convolutions performed best for the linear activation function version of a separable variant, while 15 pixels filters worked best for all other versions. As in previous experiments, we invite further research into the exact form of the trained filters. Informed by these and \textit{1.3.4} results, we also suggest investigating the exact effects of the number of nonlinearities in the model across various architectures.
-
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_2_2_4}
     \caption[Experiment 2.2.4]{Filter layer non-linearity and the convolutional DoG variant.}
     \label{fig:5.2.2.4}
 \end{figure}
 
+While still lower than our baseline model, the linear version of a fully connected hidden layer variant achieved (0.498, 0.516, 0.448) versus (0.482, 0.496, 0.466) of the nonlinear version (Fig. \ref{fig:5.2.2.4}). And the separable version reached (0.495, 0.509, 0.462) versus (0.483, 0.502, 0.465) of its nonlinear counterpart. Surprisingly, a variant with 7 pixels wide convolutions performed best for the linear activation function version of a separable variant, while 15 pixels filters worked best for all other versions. As in previous experiments, we invite further research into the exact form of the trained filters. Informed by these and \textit{1.3.4} results, we also suggest investigating the exact effects of the number of nonlinearities in the model across various architectures.
+
 \subsubsection{Reimplementing what/where model}
 
-Entirely as an exercise, with \textit{experiment 2.2.5} we tried to reimplement the what/\-where model architecture as introduced by \cite{klindt} Due to it not being the focus of our work, we limited ourselves to only information published in the paper without consulting either of the available implementations\footnote{\href{https://github.com/david-klindt/NIPS2017}{https://github.com/david-klindt/NIPS2017}, \href{https://github.com/aecker/cnn-sys-ident/tree/master/analysis/iclr2019}{https://github.com/aecker/cnn-sys-ident/\-tree/master/analysis/iclr2019}.}. Given that, we had to grid-search some hyperparameters such as regularization strengths or convolution strides and also chose to use our training regime. 
+Entirely as an exercise, with \textit{experiment 2.2.5} we tried to reimplement the what/\-where model architecture as introduced by \cite{klindt} Due to it not being the focus of our work, we limited ourselves to only information published in the paper without consulting either of the available implementations\footnote{\href{https://github.com/david-klindt/NIPS2017}{https://github.com/david-klindt/NIPS2017}, \\ \href{https://github.com/aecker/cnn-sys-ident/tree/master/analysis/iclr2019}{https://github.com/aecker/cnn-sys-ident/tree/master/analysis/iclr2019}.}. Given that, we had to grid-search some hyperparameters such as regularization strengths or convolution strides and also chose to use our training regime. 
 
 Further, we replicated the architecture using only techniques already available in NDN3, which forced us to deviate from the original in a number of ways. Instead of the in-NDN3-unavailable group-sparsity regularization on the 3 convolutional layers cascade, we tested max and L2 regularizations. For the same reason, we had to leave out batch normalisation which is originally part of each convolutional layer of the model. Generally, our version was relatively different in terms of things that influence training but was equivalent inference architecture wise.
 
 The best instance reached peak validation set correlation of (0.48, 0.497, 0.461) and (0.479, 0.494, 0.455) at the end of training (Fig. \ref{fig:5.2.2.5}). A result on par with our shallower convolution variant of the HSM model (experiment 2.2.2) but still below both our baseline 4 model and especially the published result of 0.55 of the original \citeauthor{klindt} version. As this was a sideline exercise, we did not dedicate further resources to properly reimplement the model. However, we still believe it can serve as evidence that hyperparameters and only training influencing parts of the model can have more substantial impact than larger architectural differences.
 
+In addition to hyperparameters that were in accordance with the paper, we also tested a few other variants. Interestingly, with this architecture L1 regularization worked better than L2 on the output layer. A complete opposite to what we observed on our HSM based models. We also observed that 2-pixel strides on the convolutional layers worked consistently better than half-the-filter-size strides. A result suggesting fine-tuned positioning of first layer filters is important.
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_2_2_5}
     \caption[Experiment 2.2.5]{Comparing the best reimplemented what/where instance to various other model architectures.}
     \label{fig:5.2.2.5}
 \end{figure}
-
-In addition to hyperparameters that were in accordance with the paper, we also tested a few other variants. Interestingly, with this architecture L1 regularization worked better than L2 on the output layer. A complete opposite to what we observed on our HSM based models. We also observed that 2-pixel strides on the convolutional layers worked consistently better than half-the-filter-size strides. A result suggesting fine-tuned positioning of first layer filters is important.
 
 \subsection{Discussion}
 
@@ -330,7 +330,7 @@ This result was, in a way, expected. All tested alterations are theoretically co
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_3_2_1_1}
     \caption[Various architectures on region 1]{Various architectures fully trained on region 1.}
     \label{fig:5.3.2.1_1}
 \end{figure}
@@ -363,7 +363,7 @@ The best instance of the model trained on all three regions pooled together achi
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_3_1_1_1}
     \caption[Experiment 3.1.1]{Models trained on regions 1,2,3 pooled together\protect\footnotemark.}
     \label{fig:5.3.1.1_1}
 \end{figure}
@@ -373,7 +373,7 @@ In addition to using all three regions, we also run the same experiment with onl
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_3_1_1_2}
     \caption[Experiment 3.1.1 2]{Models trained on regions 1,2 pooled together\protect\footnotemark.}
     \label{fig:5.3.1.1_2}
 \end{figure}
@@ -404,7 +404,7 @@ The baseline models with plain DoG layer outperformed all other variants across 
         Baseline 2 & 0.496, 0.523, 0.469 & 0.415, 0.429, 0.398 & 0.454, 0.460, 0.449 \\ 
         Convolution & 0.476, 0.498, 0.446 & 0.358, 0.391, 0.306 & 0.416, 0.445, 0.403 \\ 
         LNLN & 0.481, 0.491, 0.471 & 0.340, 0.362, 0.327 & 0.404, 0.417, 0.396 \\ 
-        Conv. DoG & 0.488, 0.497, 0.444 & 0.318, 0.363, 0.288 & 0.408, 0.433, 0.385 \\ \bottomrule
+        Conv. DoG & 0.486, 0.499, 0.450 & 0.318, 0.363, 0.288 & 0.396, 0.432, 0.384 \\ \bottomrule
     \end{tabular}
     \caption[Performance of various models across regions]{Validation set correlations (50th, 90th, 10th percentiles) of various architectures across three regions.}
     \label{tab:5.3.2.1}
@@ -416,14 +416,14 @@ While on region 1 all models, apart from \textit{baseline 4}, fared relatively s
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_3_2_1_2}
     \caption[Various architectures on region 2]{Various architectures trained on region 2.}
     \label{fig:5.3.2.1_2}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../figures/05_dummy}
+    \includegraphics[width=1\textwidth]{../figures/05_3_2_1_3}
     \caption[Various architectures on region 3]{Various architectures trained on region 3.}
     \label{fig:5.3.2.1_3}
 \end{figure}
