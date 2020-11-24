@@ -1,7 +1,7 @@
 \chapter{Background}\label{ch:1}
 
 \section{Visual sensory neuroscience}
-In this section, we provide an introduction to visual neuroscience necessary for understanding the biological plausibility of our models. For a more comprehensive and in-depth introduction to neuroscience of vision please refer to \textit{Neuroscience: Exploring the Brain} \citep{bear_neuroscience:_2007} or the excellent summary provided as part of \cite{Carandini10577} review.
+In this section, we provide an introduction to visual neuroscience necessary for understanding the biological plausibility of our models. For a more comprehensive and in-depth introduction to neuroscience of vision please refer to \textit{Neuroscience: Exploring the Brain} \citep{bear_neuroscience:_2007} or the excellent summary provided as part of \cite{Carandini10577}'s review.
 
 \subsection{Early visual system}\label{ch:1.1.1}
 In this thesis we restrict our focus to the first 3 early stages of visual processing, corresponding to three neural structures: the retina, lateral geniculate body (LGN) and primary visual cortex (V1).
@@ -13,7 +13,7 @@ The first processing step happens directly in the eye through retinal ganglion c
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{../figures/01_33-Figure2.8-1}
-    \caption[Receptive fields of retinal ganglion and LGN cells]{Receptive fields of retinal ganglion and LGN cells. Adapted from \cite{thesis_2015}.}
+    \caption[Receptive fields of retinal ganglion and LGN cells]{Receptive fields of retinal ganglion and LGN cells. Adapted from \citep{thesis_2015}.}
     \label{fig:1.1}
 \end{figure}
 
@@ -24,7 +24,7 @@ At last, the signal reaches the primary visual cortex. It is divided into 6 laye
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.2525\textwidth]{../figures/01_Gabor_filter}
-    \caption[Gabor filter-type receptive field typical for a simple cell]{Gabor filter-type receptive field typical for a simple cell. Blue regions indicate inhibition, red excitation. Figure was adopted from \cite{pict_gabor_filter}.}
+    \caption[Gabor filter-type receptive field typical for a simple cell]{Gabor filter-type receptive field typical for a simple cell. Blue regions indicate inhibition, red excitation. Figure was adopted from \citep{pict_gabor_filter}.}
     \label{fig:1.2}
 \end{figure}
 
@@ -32,7 +32,7 @@ The nature of complex cells is not yet entirely settled, but it is understood th
 
 \section{Computational neuroscience}
 
-In the following subsections, we provide an introduction to the traditional system identification methods used in visual neuroscience. For further details, refer to \textit{Data-driven approaches to understanding visual neuron activity} \citep{doi:10.1146/annurev-vision-091718-014731} or \cite{Carandini10577} review.
+In the following subsections, we provide an introduction to the traditional system identification methods used in visual neuroscience. For further details, refer to \textit{Data-driven approaches to understanding visual neuron activity} \citep{doi:10.1146/annurev-vision-091718-014731} or \cite{Carandini10577}'s review.
 
 \subsection{General overview}
 
@@ -121,7 +121,7 @@ Training a DNN, e.g. for a vision task, from scratch requires large amounts of d
 We can simply take an initial portion of an already trained network, use its layers including trained weights as the foundation of a new model, and only append it with a few new problem specific layers that are then trained from scratch. This can substantially cut down on the amount of data required, as we only need to constrain the parameters of newly added layers, and also serves as a regularization technique, making sure the initial low level filters are not overfitted on our limited data\footnote{\citep{2018arXiv180801974T}}. 
 
 \section{DNNs and computational neuroscience}
-There are several differences between system identification tasks of computational neuroscience and classical problems of computer vision. Mainly, the amount and quality of data. Where for example image classification datasets usually feature tens of thousands of precisely annotated examples\footnote{Cifar-10: \cite{cifar10}, Fashion-MNIST: \cite{xiao2017}}, system identification tasks on early visual processing have often only few thousands of substantially noisy recordings. This has vast implications for not only viable architectures, as more layers mean more free parameters (e.g. 65 millions in case of YOLOv3\footnote{\citep{2018arXiv180402767R}}) that have to be constrained by data to prevent overfitting, but - as we will see, also has the potential to invalidate our intuition around many aspects such as regularization and model stability we might have from working with larger models and datasets. 
+There are several differences between system identification tasks of computational neuroscience and classical problems of computer vision. Mainly, the amount and quality of data. Where for example image classification datasets usually feature tens of thousands of precisely annotated examples\footnote{Cifar-10: \citep{cifar10}, Fashion-MNIST: \citep{xiao2017}}, system identification tasks on early visual processing have often only few thousands of substantially noisy recordings. This has vast implications for not only viable architectures, as more layers mean more free parameters (e.g. 65 millions in case of YOLOv3\footnote{\citep{2018arXiv180402767R}}) that have to be constrained by data to prevent overfitting, but - as we will see, also has the potential to invalidate our intuition around many aspects such as regularization and model stability we might have from working with larger models and datasets. 
 
 In the following section we will introduce particular tools and techniques that are commonly used by system identification methods in neuroscience and which will be featured in our exploration, but are not as well known in the classical machine learning or computer vision domain. 
 

@@ -4,7 +4,7 @@ In this chapter, we start by introducing the \cite{antolik} model, which will be
 
 \section{Antolik et al. and the DoG layer}
 
-Published in 2016, the paper \textit{Model Constrained by Visual Hierarchy Improves Prediction of Neural Responses to Natural Scenes} by \cite{antolik} introduced a three layer DNN model to fit primary visual cortex responses to image stimuli. As its main contribution, it explored incorporating biologically plausible components with traditional DNN methods. Doing so, it managed to outperform\footnote{For results refer to section \ref{ch:4.1.2}.}, at the time of writing, other state of the art methods while providing greater interpretability and requiring less free parameters.
+Published in \citeyear{antolik}, the paper \textit{Model Constrained by Visual Hierarchy Improves Prediction of Neural Responses to Natural Scenes} by \citeauthor{antolik} introduced a three layer DNN model to fit primary visual cortex responses to image stimuli. As its main contribution, it explored incorporating biologically plausible components with traditional DNN methods. Doing so, it managed to outperform\footnote{For results refer to section \ref{ch:4.1.2}.}, at the time of writing, other state of the art methods while providing greater interpretability and requiring less free parameters.
 
 The model (further also referred to as the HSM model) is grounded in known hierarchical properties of the early visual system in three ways. First, it assumes that LGN units can be well modeled using difference of Gaussians filters. Second, that local population of V1 neurons share inputs from a limited number of such LGN units. Third, that simple cells can be constructed as a combination of several LGN neurons and complex cells similarly from simple cells. Based on these assumptions, the model consists of 3 layers (Fig. \ref{fig:2.1}): the first represents both the retinal and LGN computation, and the second and third the two levels of V1 neurons.
 
@@ -26,7 +26,7 @@ The two levels of V1 neurons are modeled as two consecutive fully connected laye
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{../figures/02_HSM}
-    \caption[HSM model architecture]{Three layer architecture of HSM model and corresponding neural sections. Figure was adopted from \cite{antolik}.}
+    \caption[HSM model architecture]{Three layer architecture of HSM model and corresponding neural sections. Figure was adopted from \citep{antolik}.}
     \label{fig:2.1}
 \end{figure}
 
@@ -38,7 +38,7 @@ The reported values for the hidden layer size ratio and the number of DoG filter
 
 \section{Klindt et al. and the separable layer}\label{ch:2.2}
 
-In 2017 \citeauthor{klindt} published a paper \textit{Neural system identification for large populations separating “what” and “where”} \citep{klindt} that explored deep convolutional neural networks in the context of V1 neural data. It specifically focused on the estimation of individual neurons’ receptive field locations through a novel approach to readout layer\footnote{Readout layer is the first fully connected layer after a set of convolutional layers.} factorization, in an effort to allow effective fitting of thousands of neurons on relatively little data simultaneously. In addition to artificial data, it was also evaluated on the same dataset as \cite{antolik} where it achieved state of the art results\footnote{For results refer to section \ref{ch:4.1.2}.}, improving on \cite{antolik}
+In \citeyear{klindt} \citeauthor{klindt} published a paper \textit{Neural system identification for large populations separating “what” and “where”} that explored deep convolutional neural networks in the context of V1 neural data. It specifically focused on the estimation of individual neurons’ receptive field locations through a novel approach to readout layer\footnote{Readout layer is the first fully connected layer after a set of convolutional layers.} factorization, in an effort to allow effective fitting of thousands of neurons on relatively little data simultaneously. In addition to artificial data, it was also evaluated on the same dataset as \cite{antolik} where it achieved state of the art results\footnote{For results refer to section \ref{ch:4.1.2}.}, improving on \cite{antolik}
 
 \subsection{Architecture}
 
@@ -47,7 +47,7 @@ The what/where model consists of two parts, feature space and receptive fields (
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{../figures/02_fig2}
-    \caption[klindt et al. model]{Architecture of \citeauthor{klindt} model, consisting of convolution layers and a factorized readout layer. Figure was adopted from \cite{klindt}.}
+    \caption[klindt et al. model]{Architecture of \citeauthor{klindt} model, consisting of convolution layers and a factorized readout layer. Figure was adopted from \citep{klindt}.}
     \label{fig:2.2}
 \end{figure}
 
