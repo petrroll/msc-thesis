@@ -1,0 +1,24 @@
+%%% A template for a simple PDF/A file like a stand-alone abstract of the thesis.
+
+\documentclass[12pt]{report}
+
+\usepackage[a4paper, hmargin=1in, vmargin=1in]{geometry}
+\usepackage[a-2u]{pdfx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{textcomp}
+
+\begin{document}
+
+%% Do not forget to edit abstract.xmpdata.
+
+Modelování zrakového systému je klíčové k pochopení, jak mozek zpracovává vizuální informace. V posledních letech se v tomto oboru etablovaly metody hlubokého učení. Jen málo výzkumů se, ovšem pokusilo zkombinovat známé anatomické vlastnosti zrakového systému s přístupy hlubokého učení, adaptovanými z klasického strojového učení, s cílem zlepšit přesnost a interpretovatelnost výsledných modelů na obrazových datech.
+
+V této práci se zaměříme na optimalizaci biologicky inspirované hluboké architektury, navržené pro modelování populačních dat zachycených z primární zrakové kůry savčích mozků při zrakové stimulaci fotkami přírodních motivů. Tento model reimplementujeme v rámci existujícího frameworku zaměřeného na neurobiologické modelování pomocí metod hlubokého učení NDN3 a posoudíme jej v kontextu stability a citlivosti vůči změnám hyperparametrů a ladění architektury. Následně tento model rozšíříme o komponenty z architektur klasického hlubokého strojového vidění a porovnáme tyto nové kombinace s biologicky inspirovanými verzemi.
+
+Podařilo se nám identifikovat modifikace, které výrazně zlepšují stabilitu modelu a zároveň dosahují středního zlepšení v přesnosti. Taktéž jsme zdokumentovali důležitost ladění hyperparametrů vůči větším architektonickým změnám, a tím položili základy dalšímu výzkumu nových architektur. Nové komponenty byly implementovány a poskytnuty v rámci otevřeného frameworku NDN3.
+
+Tato práce zasazuje biologicky inspirované hluboké architektury do moderního NDN3 prostředí. Zároveň identifikuje optimální hyper-parametrizaci a celkově pokládá základy k dalšímu vývoji biologicky inspirovaných modelů.
+
+\end{document}
