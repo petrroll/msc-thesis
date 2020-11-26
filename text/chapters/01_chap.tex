@@ -50,7 +50,7 @@ In the rest of this chapter, and thesis in general, we will consider only statis
 The simplest method possible for predicting a single neuron’s response to an image stimuli is a \textit{linear model}, essentially a linear regression over the pixels of the input. Mathematically, for parameters $o$ (also called \textit{weights} or in this case \textit{filter}) and an image of height $h$ and width $w$ pixels that gives us the equation \ref{eq:1.2}. In such a linear model, the weights can be fitted in a number of ways, either through gradient descent methods, or analytically to compute the optimal solutions from the whole dataset. The second approach is commonly called \textit{Spike Triggered Average (STA)}. Both ways of fitting can incorporate regularization for the weights, for example to punish a high first derivative in both spatial dimensions, ensuring smoothness \citep{first_kernel}. This is particularly necessary in the neuroscientific settings where datasets tend to be of limited size, and overfitting of models is thus a major challenge. 
 
 \begin{equation}\label{eq:1.2}
-    r = \sum_{x,y=0}^{w,h} s_{x,y} * o_{x,y}
+    r = \sum_{x,y=0}^{w,h} s_{x,y} o_{x,y}
 \end{equation}
 
 A natural extension of a linear model is a \textit{linear-nonlinear (LN) model}. As the name suggests, it is a linear model whose output is modulated by a single nonlinear function $f$ (Eq. \ref{eq:1.3}). This type of model is commonly used in a \textit{regularized variant (rLN)}. Due to its direct interpretability - we can easily visualise the filter, ease of analysis - the parameters (filters) are easy to compare and work with using image processing toolkit, and computational simplicity - it is just a linear operation, LN models were the de facto standard model of computational neuroscience until relatively recently.
@@ -68,7 +68,7 @@ In an effort to further improve the prediction power of the LN model, several of
 Since the k-ary non-linearity function can combine the individual results in a non-linear way, this increases the computational expressiveness of the model. There are two limitations of this approach. It makes the k-ary function an additional hyperparameter and, in turn, does not allow the way individual filters are combined to be fitted to data. The \textit{LNLN model} solves both problems, replacing the k-ary non-linear function with a linear combination of several LN models (Eq. \ref{eq:1.5}):
 
 \begin{equation}\label{eq:1.5}
-    r = f(\sum_{i=0}^{k} w_i * f_i(s \cdot o_i))
+    r = f(\sum_{i=0}^{k} w_i f_i(s \cdot o_i))
 \end{equation}
 
 In addition to solving the two problems of GLM and being more interpretable, as it is simply a linear combination of LN models whose filters we can visualise with a non-linearity at the end, the fact that the combination can be individually parametrized opened the door to a particular multi-step learning strategy. When modeling multiple neurons that are believed to be similar in function, we can share the first level filters ($o_i$) between them, and only individually fit the $w$ parameters. This allows the filters $o_i$ to be based on more data - from all neurons instead of just one, and in turn, decreases the chance for overfitting.
@@ -82,7 +82,7 @@ In this section we will provide a brief overview of deep neural networks (DNN) f
 Deep neural network (DNN) is a statistical machine learning model vaguely inspired by the brain. The term neural comes from the fact that it is traditionally composed of computational neurons\footnote{Not to be confused with biological neurons.} (also called perceptrons\footnote{\citep{Rosenblatt1958ThePA}}). Computational neurons are mathematically defined as a weighted sum of their inputs followed by, usually a non-linear, activation function. Deep and networks, because they are usually composed of several interconnected layers of neurons. A single layer of a DNN is defined by its inputs $x$ and outputs $y$ tensors. The output of the $k$-th neuron of the simplest, a fully connected, layer with $n$ inputs is then (Eq. \ref{eq:1.6}):
 
 \begin{equation}\label{eq:1.6}
-    y_k = f(\sum_{i}^{n} x_{i} * w_{k,i})
+    y_k = f(\sum_{i}^{n} x_{i} w_{k,i})
 \end{equation}
 
 When multiple layers $f_1, f_2, \dots, f_n$ are stacked on each other - to form a deep neural network, the outputs of the preceding layer are used as the inputs of the following one. The output of a complete DNN is then $y = f_n(\dots f_2(f_1(x))\dots)$. To tie this back to computational neuroscience, a LN model would be a single layer neural network. Its input size would be equal to the size of stimulus and output size to 1, as we are predicting a single neuron. Similarly, a single neuron LNLN model would be two layers DNN, where the size of the first layer would correspond to the number of LNLN filters, and the second would have size 1. If we wanted a LNLN model where the filters are shared across multiple fitted neurons, it would again be two layers DNN. The second layer would have size corresponding to the number of recorded neurons, however. Each output neuron (output of the second layer) would then be an independent combination of shared filters (the outputs of the first layer).
