@@ -27,7 +27,7 @@ With aforementioned differences, the initial reimplementation, further referred 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_1_1_1}
-    \caption[Experiment 1.1.1]{Validation set correlation of first \textit{baseline} model versus the original \cite{antolik} implementation on region 1\protect\footnotemark.}
+    \caption[Experiment 1.1.1]{Validation set correlation of first \textit{baseline} model versus the original \cite{antolik} implementation\protect\footnotemark on region 1.}
     \label{fig:5.1.1.1}
 \end{figure}
 \footnotetext{We only have fully trained data for the \citeauthor{antolik} \textit{HSM model}. We thus show the final mean performance and its variance for all time points.}
@@ -49,7 +49,7 @@ Figure \ref{fig:5.1.2.1} showcases the dramatic improvement both of these change
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_1_2_1_2}
-    \caption[Experiment 1.2.1 2]{\textit{Baseline 1}, \textit{baseline 2}, and \citeauthor{antolik} implementation. Showcasing the effect of small non-architectural changes.}
+    \caption[Experiment 1.2.1 2]{\textit{Baseline 1}, \textit{baseline 2}, and \citeauthor{antolik} implementation\protect\footnotemark[9]. Showcasing the effect of small non-architectural changes.}
     \label{fig:5.1.2.1_2}
 \end{figure}
 
@@ -333,7 +333,7 @@ This result was, in a way, expected. All tested alterations are theoretically co
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_3_2_1_1}
-    \caption[Various architectures on region 1]{Various architectures fully trained on {region 1}\protect\footnotemark.}
+    \caption[Various architectures on region 1]{Various architectures\protect\footnotemark fully trained on {region 1}.}
     \label{fig:5.3.2.1_1}
 \end{figure}
 \footnotetext{We only have fully trained data for the \citeauthor{antolik} \textit{HSM model}. We thus show the final mean performance and its variance for all time points.}
@@ -421,17 +421,17 @@ While on {region 1} all models, apart from \textit{baseline 4}, fared relatively
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_3_2_1_2}
-    \caption[Various architectures on region 2]{Various architectures trained on {region 2}\protect\footnotemark.}
+    \caption[Various architectures on region 2]{Various architectures\protect\footnotemark trained on {region 2}.}
     \label{fig:5.3.2.1_2}
 \end{figure}
+\footnotetext{We only have fully trained data for the \citeauthor{antolik} \textit{HSM model}. We thus show the final mean performance and its variance for all time points.}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{../figures/05_3_2_1_3}
-    \caption[Various architectures on region 3]{Various architectures trained on {region 3}.}
+    \caption[Various architectures on region 3]{Various architectures\protect\footnotemark[60] trained on {region 3}.}
     \label{fig:5.3.2.1_3}
 \end{figure}
-\footnotetext{We only have fully trained data for the \citeauthor{antolik} \textit{HSM model}. We thus show the final mean performance and its variance for all time points\protect\footnotemark[60].}
 
 
 The \textit{convolutional variants} (\textit{normal convolution} and \textit{convolutional DoG}) exhibited two noteworthy behaviours. First, they suffered overfitting on {region 3}. This was puzzling since, {region 3} is of the same size as {region 1}, with {region 2} being relatively smaller and thus -- as we would expect -- more susceptible to overfitting. Second, they were significantly less consistent in stability with respect to random initialization across the three regions. This showed especially on {region 2} but was relatively clear even on {region 3}. Surprisingly, the \textit{LNLN model} seemed relatively well behaved in this regard, with its 10-90th percentile run range consistent and comparable to the \textit{plain DoG} variants across all three regions.
