@@ -231,7 +231,7 @@ A few more noteworthy observations. Moderately strong Laplacian regularization o
 
 \subsubsection{LN model}
 
-\textbf{Experiment 2.1.2} tested an architecture equivalent to a simple LN model. The first and only layer featured a spatial Laplacian regularization, with its strength being the only free hyperparameter of the architecture. 
+\textbf{Experiment 2.1.2} tested an architecture equivalent to a simple LN model. The first and only layer featured a spatial Laplacian regularization, with its strength being the only free hyperparameter of the architecture. The aim of this experiment was to compare analytically optimzed rLN model from \cite{antolik} with an architecturally equivalent gradient-descent optimized version.
 
 \begin{figure}[H]
     \centering
@@ -241,7 +241,7 @@ A few more noteworthy observations. Moderately strong Laplacian regularization o
 \end{figure}
 \footnotetext{We only have fully trained data for the \citeauthor{antolik} \textit{rLN model}. We thus show the final mean performance and its variance for all time points.}
 
-As shown on figure \ref{fig:5.2.1.2}, the results (0.282, 0.296, 0.265) were substantially lower than those of our previously tested and more computationally complex models and on-par with the performance of an analytically optimized version of an \textit{rLN model} with Laplacian regularization reported by \cite{antolik} (0.31). The same as in the previous experiment, some regularization proved to be a necessity while too strong led to poor, albeit very consistent, performance.
+As expected and shown on figure \ref{fig:5.2.1.2}, the results (0.282, 0.296, 0.265) were substantially lower than those of our previously tested and more computationally complex models and on-par with the analytically optimized version of the \textit{rLN model} with Laplacian regularization reported by \cite{antolik} (0.31). The same as in the previous experiment, some regularization proved to be a necessity while too strong led to poor, albeit very consistent, performance.
 
 \subsection{Convolutional and separable models}
 \subsubsection{Convolutions instead of DoG}\label{ex:2.2.1}
